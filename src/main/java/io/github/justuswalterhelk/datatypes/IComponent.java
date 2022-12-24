@@ -4,10 +4,10 @@ import io.github.justuswalterhelk.registries.ComponentRegistry;
 
 public abstract class IComponent
 {
-    private void register() {
+    public final void register() {
         ComponentRegistry.register(this);
     }
-    private void Awake() {}
-    private void Start() {}
-    private void Update() {}
+    public void Awake() {}
+    public void Start() {}
+    public void Update() {}
 }

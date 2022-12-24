@@ -2,6 +2,7 @@ package io.github.justuswalterhelk;
 
 public class Constants
 {
-    public static final long ENGINE_TICK_RATE = 1L;
-    public static final float ENGINE_FRAME_RATE = 2;
+    public final static int FRAMES_PER_SECOND = 30;
+    //Time to wait before the next engine tick depending on current frame rate
+    public final static int SKIP_TICKS = 1000 / FRAMES_PER_SECOND;
 }

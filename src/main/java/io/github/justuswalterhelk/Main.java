@@ -3,6 +3,8 @@ package io.github.justuswalterhelk;
 import io.github.justuswalterhelk.components.PositionComponent;
 import io.github.justuswalterhelk.datatypes.Vector3;
 
+import javax.swing.*;
+import java.awt.*;
 import java.io.Console;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -12,9 +14,6 @@ import java.util.concurrent.TimeUnit;
 
 public class Main
 {
-    final static int FRAMES_PER_SECOND = 60;
-    //Time to wait before the next engine tick depending on current frame rate
-    final static int SKIP_TICKS = 1000 / FRAMES_PER_SECOND;
 
     static long start = 0;
 
@@ -28,12 +27,16 @@ public class Main
 
         boolean game_is_running = true;
 
+        JFrame frame = new JFrame("Foxfire");
+        frame.setSize(1920,1080);
+        frame.setVisible(true);
+
         while(game_is_running)
         {
             //update game
             //display game
 
-            next_game_tick += SKIP_TICKS;
+            next_game_tick += Constants.SKIP_TICKS;
             sleep_time = next_game_tick - getTickCount();
             if(sleep_time >= 0)
             {
