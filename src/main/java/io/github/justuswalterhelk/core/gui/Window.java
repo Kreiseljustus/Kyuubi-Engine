@@ -1,9 +1,12 @@
 package io.github.justuswalterhelk.core.gui;
 
+import io.github.justuswalterhelk.core.input.Key;
+import io.github.justuswalterhelk.core.input.KeyListener;
 import org.lwjgl.glfw.GLFWErrorCallback;
 import org.lwjgl.opengl.GL;
 
 import static java.sql.Types.NULL;
+import static org.lwjgl.glfw.Callbacks.glfwFreeCallbacks;
 import static org.lwjgl.glfw.GLFW.*;
 import static org.lwjgl.opengl.GL11.*;
 
@@ -35,6 +38,16 @@ public class Window
         System.out.println("Running window with id of " + window);
         loop();
 
+        //Free the callbacks and destroy window
+        glfwFreeCallbacks(window);
+        glfwDestroyWindow(window);
+
+        System.out.println("Destroyed window with id of " + window);
+        //Destroy glfw
+        //May need some refactoring when working with multiple windows
+        //will destroy EVERY window
+        glfwTerminate();
+
         return this;
     }
 
@@ -65,6 +78,8 @@ public class Window
             //TODO: Add a warning in the engine debugger
             throw new IllegalStateException("Failed to create window");
         }
+
+        glfwSetKeyCallback(window, KeyListener::keyCallback);
 
         //WARNING: Needs proper handling when dealing with multiple windows on the same Thread!
         glfwMakeContextCurrent(window);

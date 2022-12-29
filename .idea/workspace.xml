@@ -5,12 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="02900dda-03a4-4437-98fc-b059318dfb24" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/io/github/justuswalterhelk/core/gui/Window.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/io/github/justuswalterhelk/core/gui/WindowHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/io/github/justuswalterhelk/core/input/Key.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/io/github/justuswalterhelk/core/input/KeyListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/io/github/justuswalterhelk/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/justuswalterhelk/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/justuswalterhelk/core/gui/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/justuswalterhelk/core/gui/Window.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,6 +25,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -44,13 +44,13 @@
     <option name="showMembers" value="true" />
     <option name="useFileNestingRules" value="false" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "settings.editor.selected.configurable": "inlay.hints"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;inlay.hints&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="io.github.justuswalterhelk.Main" />
