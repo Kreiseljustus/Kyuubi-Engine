@@ -5,11 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="02900dda-03a4-4437-98fc-b059318dfb24" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/io/github/justuswalterhelk/core/input/Key.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/io/github/justuswalterhelk/core/input/KeyListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/shaders/default.glsl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/io/github/justuswalterhelk/core/Time.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/io/github/justuswalterhelk/core/gui/Container.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/io/github/justuswalterhelk/core/gui/TestContainer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/io/github/justuswalterhelk/core/input/MouseListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/io/github/justuswalterhelk/core/status/PlayInEditor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/io/github/justuswalterhelk/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/justuswalterhelk/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/io/github/justuswalterhelk/core/gui/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/justuswalterhelk/core/gui/Window.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/justuswalterhelk/core/gui/WindowHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/justuswalterhelk/core/gui/WindowHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/justuswalterhelk/core/input/Key.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/justuswalterhelk/core/input/Key.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/justuswalterhelk/core/input/KeyListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/justuswalterhelk/core/input/KeyListener.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,11 +28,23 @@
       <ProjectState />
     </projectState>
   </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand />
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Enum" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -48,7 +67,8 @@
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;inlay.hints&quot;
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Kreiseljustus/Desktop/test/SpitFire-Java-Engine-OpenGL2.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
 }</component>
   <component name="RunManager">

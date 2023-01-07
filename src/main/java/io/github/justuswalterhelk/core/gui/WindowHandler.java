@@ -26,6 +26,21 @@ public class WindowHandler
         return window;
     }
 
+    public Window newWindow(int width, int height, String title, boolean fullScreen)
+    {
+        Window window = new Window(width,height,title,fullScreen);
+        activeWindows.put(window.getWindowID(), window);
+        return window;
+    }
+
+    public Window initNewWindow(int width, int height, String title, boolean fullScreen)
+    {
+        Window window = new Window(width,height,title,fullScreen);
+        window.initWindow();
+        activeWindows.put(window.getWindowID(), window);
+        return window;
+    }
+
     public HashMap<Long, Window> getActiveWindows()
     {
         return activeWindows;

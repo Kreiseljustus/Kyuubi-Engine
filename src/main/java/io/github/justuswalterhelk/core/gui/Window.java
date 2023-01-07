@@ -1,9 +1,13 @@
 package io.github.justuswalterhelk.core.gui;
 
-import io.github.justuswalterhelk.core.input.Key;
+import io.github.justuswalterhelk.core.Time;
 import io.github.justuswalterhelk.core.input.KeyListener;
 import org.lwjgl.glfw.GLFWErrorCallback;
 import org.lwjgl.opengl.GL;
+
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 
 import static java.sql.Types.NULL;
 import static org.lwjgl.glfw.Callbacks.glfwFreeCallbacks;
@@ -15,6 +19,8 @@ public class Window
     private final int width;
     private final int height;
     private final String title;
+
+    private List<Container> containers = new LinkedList<Container>();
 
     private final boolean fullScreen;
 
@@ -70,6 +76,12 @@ public class Window
         glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE);
         glfwWindowHint(GLFW_MAXIMIZED, fullScreen ? 1:0);
 
+        //For apple ARM silicone
+        //glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+        //glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+        //glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GLFW_TRUE);
+        //glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+
         //TODO: Add monitor and share to constructor
         //Create the window and save its id in a long
         window = glfwCreateWindow(this.width,this.height,this.title, NULL,NULL);
@@ -85,7 +97,7 @@ public class Window
         glfwMakeContextCurrent(window);
 
         //V-Sync
-        //glfwSwapInterval(1)
+        //glfwSwapInterval(1);
 
         //Show the window
         glfwShowWindow(window);
@@ -98,8 +110,29 @@ public class Window
         return this;
     }
 
+    public Window addContainer(Container container)
+    {
+        containers.add(container);
+        System.out.println("Added " + container.containerName + " as a container to " + window);
+
+        return this;
+    }
+
+    public Window initContainers()
+    {
+        for(Container e : containers)
+        {
+            e.init();
+        }
+
+        return this;
+    }
+
     private void loop()
     {
+        float beginTime = Time.getTime();
+        float endTime;
+        float dt = -1.0f;
         //Can be called from any thread!
         while(!glfwWindowShouldClose(window))
         {
@@ -110,8 +143,15 @@ public class Window
             glClearColor(1.0f,1.0f,1.0f,1.0f);
             glClear(GL_COLOR_BUFFER_BIT);
 
+            if (dt >= 0) {
+                //Update?
+            }
+
             //Switches the buffers to display the next frame
             glfwSwapBuffers(window);
+            endTime = Time.getTime();
+            dt = endTime - beginTime;
+            beginTime = endTime;
         }
     }
 }

@@ -5,7 +5,7 @@ public class KeyListener
     private static KeyListener instance;
     //Key map with 350 values
     //See https://www.glfw.org/docs/3.3/group__keys.html
-    private boolean keyPressed[] = new boolean[350];
+    private final boolean[] keyPressed = new boolean[350];
 
     private KeyListener() {}
 
