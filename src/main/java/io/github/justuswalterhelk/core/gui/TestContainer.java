@@ -1,33 +1,35 @@
 package io.github.justuswalterhelk.core.gui;
 
+import io.github.justuswalterhelk.core.rendering.Shader;
+import org.lwjgl.BufferUtils;
+
+import java.nio.FloatBuffer;
+import java.nio.IntBuffer;
+
 import static org.lwjgl.opengl.GL20.*;
+import static org.lwjgl.opengl.GL30.glBindVertexArray;
+import static org.lwjgl.opengl.GL30.glGenVertexArrays;
 
 public class TestContainer extends Container {
 
-    private String vertexShaderSrc = "#version 330 core\n" +
-            "layout (location=0) in vec3 aPos;\n" +
-            "layout (location=1) in vec4 aColor;\n" +
-            "\n" +
-            "out vec4 fColor;\n" +
-            "\n" +
-            "void main()\n" +
-            "{\n" +
-            "    fColor = aColor;\n" +
-            "    gl_Position = vec4(aPos, 1.0);\n" +
-            "}";
-    private String fragmentShaderSrc = "#version 330 core\n" +
-            "\n" +
-            "in vec4 fColor;\n" +
-            "\n" +
-            "out vec4 color;\n" +
-            "\n" +
-            "void main()\n" +
-            "{\n" +
-            "    color = fColor;\n" +
-            "}";
+    private Shader shader = null;
 
-    // Ids for vertex and fragment shaders, shaderprogramm is the combined value
-    private int vertexID, fragmentID, shaderProgramm;
+    //Normalized Device Coordinates!
+    private float[] vertexArray =
+            {
+                //position                  //color
+                0.5f, -0.5f, 0.0f,           1.0f,0.0f, 0.0f, 1.0f,
+                -0.5f, 0.5f, 0.0f,            0.0f, 1.0f,0.0f, 1.0f,
+                0.5f, 0.5f, 0.0f,             0.0f, 0.0f, 1.0f, 1.0f,
+                -0.5f, -0.5f, 0.0f,          1.0f, 1.0f, 0.0f, 1.0f,
+            };
+
+    //COUNTER CLOCKWISE!
+    private int[] elementArray =
+    {
+            2,1,0,
+            0,1,3
+    };
 
     public TestContainer()
     {
@@ -35,60 +37,63 @@ public class TestContainer extends Container {
         this.containerDescription = "Container for testing basic rendering and texture bashing";
     }
 
+    private  int vaoID, vboID, eboID;
+
     @Override
     public void init()
     {
         System.out.println("Initializing " + containerName);
-        //Compile shaders
-        //Vertex
-        vertexID = glCreateShader(GL_VERTEX_SHADER);
-        //Compile it
-        glShaderSource(vertexID, vertexShaderSrc);
-        glCompileShader(vertexID);
 
-        //Error handling
-        int success = glGetShaderi(vertexID, GL_COMPILE_STATUS);
-        if(success == GL_FALSE) {
-            int len = glGetShaderi(vertexID, GL_INFO_LOG_LENGTH);
-            System.out.println("Error in 'defaultShader.glsl' \n\tVertex shader compilation failed");
-            System.out.println(glGetShaderInfoLog(vertexID, len));
-            assert false : "";
-        }
+        shader = new Shader("assets/shaders/default.glsl");
 
-        fragmentID = glCreateShader(GL_FRAGMENT_SHADER);
-        //Compile it
-        glShaderSource(fragmentID, fragmentShaderSrc);
-        glCompileShader(fragmentID);
+        shader.compile();
 
-        //Error handling
-        success = glGetShaderi(fragmentID, GL_COMPILE_STATUS);
-        if(success == GL_FALSE) {
-            int len = glGetShaderi(fragmentID, GL_INFO_LOG_LENGTH);
-            System.out.println("Error in 'defaultShader.glsl' \n\tFragment shader compilation failed");
-            System.out.println(glGetShaderInfoLog(fragmentID, len));
-            assert false : "";
-        }
+        //Generate VAO VBO EBO buffers
+        vaoID = glGenVertexArrays();
+        glBindVertexArray(vaoID);
 
-        //Link shaders
-        shaderProgramm = glCreateProgram();
-        glAttachShader(shaderProgramm, vertexID);
-        glAttachShader(shaderProgramm, fragmentID);
-        glLinkProgram(shaderProgramm);
+        //Create float buffer with vertices
+        FloatBuffer vertexBuffer = BufferUtils.createFloatBuffer(vertexArray.length);
+        vertexBuffer.put(vertexArray).flip();
+        //VBO
+        vboID = glGenBuffers();
+        glBindBuffer(GL_ARRAY_BUFFER, vboID);
+        glBufferData(GL_ARRAY_BUFFER, vertexBuffer, GL_STATIC_DRAW);
+        //Indices
+        IntBuffer elementBuffer = BufferUtils.createIntBuffer(elementArray.length);
+        elementBuffer.put(elementArray).flip();
+        eboID = glGenBuffers();
+        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, eboID);
+        glBufferData(GL_ELEMENT_ARRAY_BUFFER, elementBuffer, GL_STATIC_DRAW);
+        //vertex attribute pointers
+        int positionSize = 3;
+        int colorSize = 4;
+        int floatSizeBytes = 4;
+        int vertexSizeBytes = (positionSize + colorSize) * floatSizeBytes;
+        glVertexAttribPointer(0, positionSize, GL_FLOAT, false, vertexSizeBytes, 0);
+        glEnableVertexAttribArray(0);
 
-        //Errors
-        success = glGetProgrami(shaderProgramm, GL_LINK_STATUS);
-        if(success == 0)
-        {
-            int length = glGetProgrami(shaderProgramm, GL_INFO_LOG_LENGTH);
-            System.out.println("Error in 'defaultShader.glsl' \n\tLinking shaders failed");
-            System.out.println(glGetProgramInfoLog(shaderProgramm, length));
-            assert false : "";
-        }
+        glVertexAttribPointer(1, colorSize, GL_FLOAT, false, vertexSizeBytes, positionSize * floatSizeBytes);
+        glEnableVertexAttribArray(1);
     }
 
     @Override
     public void update(float deltaTime)
     {
+        shader.use();
+        //Bind vao
+        glBindVertexArray(vaoID);
 
+        //Enable vertex attr
+        glEnableVertexAttribArray(0);
+        glEnableVertexAttribArray(1);
+
+        glDrawElements(GL_TRIANGLES, elementArray.length, GL_UNSIGNED_INT, 0);
+
+        //Unbind clearup
+        glDisableVertexAttribArray(0);
+        glDisableVertexAttribArray(1);
+        glBindVertexArray(0);
+        shader.detach();
     }
 }

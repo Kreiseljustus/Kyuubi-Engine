@@ -145,6 +145,10 @@ public class Window
 
             if (dt >= 0) {
                 //Update?
+                for (Container e : containers)
+                {
+                    e.update(dt);
+                }
             }
 
             //Switches the buffers to display the next frame
