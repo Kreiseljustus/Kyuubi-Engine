@@ -8,7 +8,7 @@ public class Main {
 
     public static void main(String[] args)
     {
-        Window example = WindowHandler.get().initNewWindow(700, 500, "sefa", false);
+        Window example = WindowHandler.get().initNewWindow(700, 500, "KyuubiForge (Development Version)", false);
         example.addContainer(new TestContainer()).initContainers();
         example.run();
 

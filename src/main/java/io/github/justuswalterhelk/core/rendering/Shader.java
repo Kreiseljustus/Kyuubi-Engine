@@ -3,6 +3,7 @@ package io.github.justuswalterhelk.core.rendering;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.HashMap;
 
 import static org.lwjgl.opengl.GL11.GL_FALSE;
 import static org.lwjgl.opengl.GL20.*;
@@ -10,6 +11,7 @@ import static org.lwjgl.opengl.GL20.glGetShaderInfoLog;
 
 public class Shader
 {
+    private static HashMap<Integer, Shader> shaders = new HashMap<>();
 
     private int shaderProgramID;
 
@@ -19,6 +21,11 @@ public class Shader
 
     public Shader(String filePath) {
         this.filePath = filePath;
+        getSource();
+    }
+
+    private void getSource()
+    {
         try
         {
             String source = new String(Files.readAllBytes(Paths.get(filePath)));
@@ -110,6 +117,8 @@ public class Shader
             System.out.println(glGetProgramInfoLog(shaderProgramID, length));
             assert false : "";
         }
+
+        shaders.put(shaderProgramID, this);
     }
 
     public void use()
@@ -117,8 +126,15 @@ public class Shader
         glUseProgram(shaderProgramID);
     }
 
+    public void reload() { detach(); getSource(); compile();}
+
     public void detach()
     {
         glUseProgram(0);
+    }
+
+    public static HashMap<Integer, Shader> getShaders()
+    {
+        return shaders;
     }
 }

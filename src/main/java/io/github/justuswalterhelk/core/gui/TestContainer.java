@@ -1,5 +1,7 @@
 package io.github.justuswalterhelk.core.gui;
 
+import io.github.justuswalterhelk.core.input.Key;
+import io.github.justuswalterhelk.core.input.KeyListener;
 import io.github.justuswalterhelk.core.rendering.Shader;
 import org.lwjgl.BufferUtils;
 
@@ -18,7 +20,7 @@ public class TestContainer extends Container {
     private float[] vertexArray =
             {
                 //position                  //color
-                0.5f, -0.5f, 0.0f,           1.0f,0.0f, 0.0f, 1.0f,
+                0.5f, -0.5f, 0.0f,           0.0f,1.0f, 1.0f, 1.0f,
                 -0.5f, 0.5f, 0.0f,            0.0f, 1.0f,0.0f, 1.0f,
                 0.5f, 0.5f, 0.0f,             0.0f, 0.0f, 1.0f, 1.0f,
                 -0.5f, -0.5f, 0.0f,          1.0f, 1.0f, 0.0f, 1.0f,
@@ -80,6 +82,12 @@ public class TestContainer extends Container {
     @Override
     public void update(float deltaTime)
     {
+        if(KeyListener.isKeyPressed(Key.R.getValue()))
+        {
+            //Reload Shader
+            shader.reload();
+        }
+
         shader.use();
         //Bind vao
         glBindVertexArray(vaoID);
@@ -88,6 +96,7 @@ public class TestContainer extends Container {
         glEnableVertexAttribArray(0);
         glEnableVertexAttribArray(1);
 
+        //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
         glDrawElements(GL_TRIANGLES, elementArray.length, GL_UNSIGNED_INT, 0);
 
         //Unbind clearup

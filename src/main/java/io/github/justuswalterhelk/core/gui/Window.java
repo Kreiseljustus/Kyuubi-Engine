@@ -5,7 +5,6 @@ import io.github.justuswalterhelk.core.input.KeyListener;
 import org.lwjgl.glfw.GLFWErrorCallback;
 import org.lwjgl.opengl.GL;
 
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -18,7 +17,7 @@ public class Window
 {
     private final int width;
     private final int height;
-    private final String title;
+    private String title;
 
     private List<Container> containers = new LinkedList<Container>();
 
@@ -42,6 +41,7 @@ public class Window
     public Window run()
     {
         System.out.println("Running window with id of " + window);
+        glfwSetWindowTitle(window, this.title += " ([Debug]: Current Window: " + window + " )");
         loop();
 
         //Free the callbacks and destroy window

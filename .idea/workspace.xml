@@ -5,10 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="02900dda-03a4-4437-98fc-b059318dfb24" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/io/github/justuswalterhelk/core/rendering/Shader.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/shaders/default.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/assets/shaders/default.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/justuswalterhelk/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/justuswalterhelk/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/io/github/justuswalterhelk/core/gui/TestContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/justuswalterhelk/core/gui/TestContainer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/io/github/justuswalterhelk/core/gui/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/justuswalterhelk/core/gui/Window.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/justuswalterhelk/core/rendering/Shader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/justuswalterhelk/core/rendering/Shader.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
