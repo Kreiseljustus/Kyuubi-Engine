@@ -5,12 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="02900dda-03a4-4437-98fc-b059318dfb24" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/io/github/justuswalterhelk/KyuubiEditor/KyuubiEditor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/io/github/justuswalterhelk/KyuubiEditor/KyuubiEditorApp.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/io/github/justuswalterhelk/KyuubiForge/core/Application.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/io/github/justuswalterhelk/KyuubiForge/core/ApplicationCommandLineArgs.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/io/github/justuswalterhelk/KyuubiForge/core/ApplicationSpecification.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/shaders/default.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/assets/shaders/default.glsl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/justuswalterhelk/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/justuswalterhelk/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/justuswalterhelk/core/gui/TestContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/justuswalterhelk/core/gui/TestContainer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/justuswalterhelk/core/gui/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/justuswalterhelk/core/gui/Window.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/justuswalterhelk/core/rendering/Shader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/justuswalterhelk/core/rendering/Shader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/justuswalterhelk/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/justuswalterhelk/core/Time.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/justuswalterhelk/KyuubiForge/core/Time.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/justuswalterhelk/core/gui/Container.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/justuswalterhelk/KyuubiForge/gui/Container.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/justuswalterhelk/core/gui/TestContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/justuswalterhelk/KyuubiForge/gui/TestContainer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/justuswalterhelk/core/gui/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/justuswalterhelk/KyuubiForge/gui/Window.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/justuswalterhelk/core/gui/WindowHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/justuswalterhelk/KyuubiForge/gui/WindowHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/justuswalterhelk/core/input/Key.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/justuswalterhelk/KyuubiForge/input/Key.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/justuswalterhelk/core/input/KeyListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/justuswalterhelk/KyuubiForge/input/KeyListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/justuswalterhelk/core/input/MouseListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/justuswalterhelk/KyuubiForge/input/MouseListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/justuswalterhelk/core/rendering/Shader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/justuswalterhelk/KyuubiForge/rendering/Shader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/justuswalterhelk/core/status/PlayInEditor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/justuswalterhelk/KyuubiForge/core/status/PlayInEditor.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,17 +87,17 @@
     <option name="showMembers" value="true" />
     <option name="useFileNestingRules" value="false" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Kreiseljustus/Desktop/test/SpitFire-Java-Engine-OpenGL2.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "C:/Users/Kreiseljustus/Desktop/test/SpitFire-Java-Engine-OpenGL2.0",
+    "settings.editor.selected.configurable": "preferences.keymap"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Application.main">
     <configuration name="main" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="io.github.justuswalterhelk.Main" />
+      <option name="MAIN_CLASS_NAME" value="io.github.justuswalterhelk.KyuubiEditor.KyuubiEditorApp" />
       <module name="Foxfire.main" />
       <option name="VM_PARAMETERS" value="-ea" />
       <method v="2">

@@ -1,8 +1,8 @@
-package io.github.justuswalterhelk.core.gui;
+package io.github.justuswalterhelk.KyuubiForge.gui;
 
-import io.github.justuswalterhelk.core.input.Key;
-import io.github.justuswalterhelk.core.input.KeyListener;
-import io.github.justuswalterhelk.core.rendering.Shader;
+import io.github.justuswalterhelk.KyuubiForge.input.Key;
+import io.github.justuswalterhelk.KyuubiForge.input.KeyListener;
+import io.github.justuswalterhelk.KyuubiForge.rendering.Shader;
 import org.lwjgl.BufferUtils;
 
 import java.nio.FloatBuffer;

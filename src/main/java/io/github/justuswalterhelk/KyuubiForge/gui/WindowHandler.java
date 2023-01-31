@@ -1,4 +1,4 @@
-package io.github.justuswalterhelk.core.gui;
+package io.github.justuswalterhelk.KyuubiForge.gui;
 
 import java.util.HashMap;
 

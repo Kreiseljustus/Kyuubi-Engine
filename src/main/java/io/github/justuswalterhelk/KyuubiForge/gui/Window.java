@@ -1,7 +1,10 @@
-package io.github.justuswalterhelk.core.gui;
+package io.github.justuswalterhelk.KyuubiForge.gui;
 
-import io.github.justuswalterhelk.core.Time;
-import io.github.justuswalterhelk.core.input.KeyListener;
+import io.github.justuswalterhelk.KyuubiEditor.KyuubiEditor;
+import io.github.justuswalterhelk.KyuubiEditor.KyuubiEditorApp;
+import io.github.justuswalterhelk.KyuubiForge.core.Application;
+import io.github.justuswalterhelk.KyuubiForge.core.Time;
+import io.github.justuswalterhelk.KyuubiForge.input.KeyListener;
 import org.lwjgl.glfw.GLFWErrorCallback;
 import org.lwjgl.opengl.GL;
 
@@ -23,6 +26,8 @@ public class Window
 
     private final boolean fullScreen;
 
+    private static int s_WindowNumber = 0;
+
     public long getWindowID() {
         return window;
     }
@@ -42,17 +47,6 @@ public class Window
     {
         System.out.println("Running window with id of " + window);
         glfwSetWindowTitle(window, this.title += " ([Debug]: Current Window: " + window + " )");
-        loop();
-
-        //Free the callbacks and destroy window
-        glfwFreeCallbacks(window);
-        glfwDestroyWindow(window);
-
-        System.out.println("Destroyed window with id of " + window);
-        //Destroy glfw
-        //May need some refactoring when working with multiple windows
-        //will destroy EVERY window
-        glfwTerminate();
 
         return this;
     }
@@ -85,6 +79,7 @@ public class Window
         //TODO: Add monitor and share to constructor
         //Create the window and save its id in a long
         window = glfwCreateWindow(this.width,this.height,this.title, NULL,NULL);
+        s_WindowNumber += 1;
         if(window == NULL)
         {
             //TODO: Add a warning in the engine debugger
@@ -128,34 +123,55 @@ public class Window
         return this;
     }
 
-    private void loop()
+    float beginTime = Time.getTime();
+    float endTime;
+    float dt = -1.0f;
+
+    public void OnUpdate()
     {
-        float beginTime = Time.getTime();
-        float endTime;
-        float dt = -1.0f;
         //Can be called from any thread!
-        while(!glfwWindowShouldClose(window))
+        //Process all events that are still in the queue
+        glfwPollEvents();
+
+        if(glfwWindowShouldClose(window))
         {
-            //Process all events that are still in the queue
-            glfwPollEvents();
+            OnClose();
+        }
 
             //Clear color
-            glClearColor(1.0f,1.0f,1.0f,1.0f);
-            glClear(GL_COLOR_BUFFER_BIT);
+        glClearColor(1.0f,1.0f,1.0f,1.0f);
+        glClear(GL_COLOR_BUFFER_BIT);
 
-            if (dt >= 0) {
+        if (dt >= 0) {
                 //Update?
-                for (Container e : containers)
-                {
-                    e.update(dt);
-                }
+            for (Container e : containers)
+            {
+                e.update(dt);
             }
+        }
 
             //Switches the buffers to display the next frame
-            glfwSwapBuffers(window);
-            endTime = Time.getTime();
-            dt = endTime - beginTime;
-            beginTime = endTime;
+        glfwSwapBuffers(window);
+        endTime = Time.getTime();
+        dt = endTime - beginTime;
+        beginTime = endTime;
+
+    }
+
+    public void OnClose()
+    {
+        s_WindowNumber -= 1;
+        //Free the callbacks and destroy window
+        glfwFreeCallbacks(window);
+        glfwDestroyWindow(window);
+
+        System.out.println("Destroyed window with id of " + window);
+        //Destroy glfw
+        //May need some refactoring when working with multiple windows
+        //will destroy EVERY window
+        if(s_WindowNumber <= 0) {
+            Application.Get().OnClose();
+            glfwTerminate();
         }
     }
 }
