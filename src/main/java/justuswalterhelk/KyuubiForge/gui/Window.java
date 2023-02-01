@@ -1,10 +1,8 @@
-package io.github.justuswalterhelk.KyuubiForge.gui;
+package justuswalterhelk.KyuubiForge.gui;
 
-import io.github.justuswalterhelk.KyuubiEditor.KyuubiEditor;
-import io.github.justuswalterhelk.KyuubiEditor.KyuubiEditorApp;
-import io.github.justuswalterhelk.KyuubiForge.core.Application;
-import io.github.justuswalterhelk.KyuubiForge.core.Time;
-import io.github.justuswalterhelk.KyuubiForge.input.KeyListener;
+import justuswalterhelk.KyuubiForge.core.Application;
+import justuswalterhelk.KyuubiForge.core.Time;
+import justuswalterhelk.KyuubiForge.input.KeyListener;
 import org.lwjgl.glfw.GLFWErrorCallback;
 import org.lwjgl.opengl.GL;
 

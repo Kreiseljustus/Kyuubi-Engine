@@ -1,4 +1,4 @@
-package io.github.justuswalterhelk.KyuubiForge.core.status;
+package justuswalterhelk.KyuubiForge.core.status;
 
 public class PlayInEditor
 {

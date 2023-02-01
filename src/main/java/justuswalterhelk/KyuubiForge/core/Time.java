@@ -1,4 +1,4 @@
-package io.github.justuswalterhelk.KyuubiForge.core;
+package justuswalterhelk.KyuubiForge.core;
 
 public class Time
 {

@@ -1,4 +1,4 @@
-package io.github.justuswalterhelk.KyuubiForge.core;
+package justuswalterhelk.KyuubiForge.core;
 
 public class ApplicationSpecification
 {
@@ -30,4 +30,11 @@ public class ApplicationSpecification
     {
         return m_CommandLineArgs;
     }
+
+    public void SetName(String name) {m_Name = name;}
+    public void SetWorkingDirectory(String workingDirectory) {m_WorkingDirectory = workingDirectory;}
+    public void SetCommandLineArgs(ApplicationCommandLineArgs commandLineArgs) {m_CommandLineArgs = commandLineArgs;}
+    public void SetWidth(int width) {m_Width = width;}
+    public void SetHeight(int height) {m_Height = height;}
+    public void SetFullScreen(boolean fullScreen) {m_FullScreen = fullScreen;}
 }

@@ -1,4 +1,4 @@
-package io.github.justuswalterhelk.KyuubiForge.input;
+package justuswalterhelk.KyuubiForge.input;
 
 public class KeyListener
 {

@@ -1,4 +1,4 @@
-package io.github.justuswalterhelk.KyuubiForge.rendering;
+package justuswalterhelk.KyuubiForge.rendering;
 
 import java.io.IOException;
 import java.nio.file.Files;

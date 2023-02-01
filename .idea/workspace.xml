@@ -6,7 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="02900dda-03a4-4437-98fc-b059318dfb24" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/justuswalterhelk/KyuubiForge/gui/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/justuswalterhelk/KyuubiForge/gui/Window.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/justuswalterhelk/KyuubiEditor/KyuubiEditorApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/justuswalterhelk/KyuubiEditor/KyuubiEditorApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/justuswalterhelk/KyuubiForge/core/ApplicationSpecification.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/justuswalterhelk/KyuubiForge/core/ApplicationSpecification.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

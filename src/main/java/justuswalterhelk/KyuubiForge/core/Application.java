@@ -1,7 +1,7 @@
-package io.github.justuswalterhelk.KyuubiForge.core;
+package justuswalterhelk.KyuubiForge.core;
 
-import io.github.justuswalterhelk.KyuubiForge.gui.TestContainer;
-import io.github.justuswalterhelk.KyuubiForge.gui.Window;
+import justuswalterhelk.KyuubiForge.gui.TestContainer;
+import justuswalterhelk.KyuubiForge.gui.Window;
 
 public class Application
 {
