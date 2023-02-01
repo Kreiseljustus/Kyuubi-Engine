@@ -1,4 +1,4 @@
-package justuswalterhelk.KyuubiForge.input;
+package justuswalterhelk.KyuubiForge.Input;
 
 import org.joml.Vector2f;
 

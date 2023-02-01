@@ -1,4 +1,4 @@
-package justuswalterhelk.KyuubiForge.core;
+package justuswalterhelk.KyuubiForge.Core;
 
 public class Time
 {

@@ -34,9 +34,9 @@ C  [glfw.dll+0x6f00]
 Java frames: (J=compiled Java code, j=interpreted, Vv=VM code)
 J 635  org.lwjgl.system.JNI.invokePV(JJ)V (0 bytes) @ 0x0000016ef21e336c [0x0000016ef21e3320+0x000000000000004c]
 j  org.lwjgl.glfw.GLFW.glfwDestroyWindow(J)V+6
-j  io.github.justuswalterhelk.KyuubiForge.gui.Window.OnClose()V+11
-j  io.github.justuswalterhelk.KyuubiForge.gui.Window.OnUpdate()V+14
-j  io.github.justuswalterhelk.KyuubiForge.core.Application.Run()V+35
+j  io.github.justuswalterhelk.KyuubiForge.UI.Window.OnClose()V+11
+j  io.github.justuswalterhelk.KyuubiForge.UI.Window.OnUpdate()V+14
+j  io.github.justuswalterhelk.KyuubiForge.Core.Application.Run()V+35
 j  io.github.justuswalterhelk.KyuubiEditor.KyuubiEditorApp.main([Ljava/lang/String;)V+16
 v  ~StubRoutines::call_stub
 
@@ -434,7 +434,7 @@ Event: 0.484 Thread 0x0000016effc32800  656       3       java.util.LinkedList$L
 Event: 0.484 Thread 0x0000016effc32800 nmethod 656 0x0000016eead7fe90 code [0x0000016eead80040, 0x0000016eead80228]
 Event: 0.759 Thread 0x0000016effc30d50  657       4       java.util.LinkedList$ListItr::hasNext (20 bytes)
 Event: 0.759 Thread 0x0000016effc30d50 nmethod 657 0x0000016ef21e4990 code [0x0000016ef21e4b00, 0x0000016ef21e4bb8]
-Event: 1.249 Thread 0x0000016effc30d50  658       4       io.github.justuswalterhelk.KyuubiForge.gui.Window::OnUpdate (115 bytes)
+Event: 1.249 Thread 0x0000016effc30d50  658       4       io.github.justuswalterhelk.KyuubiForge.UI.Window::OnUpdate (115 bytes)
 Event: 1.257 Thread 0x0000016effc30d50 nmethod 658 0x0000016ef21e4c90 code [0x0000016ef21e4f20, 0x0000016ef21e5788]
 Event: 1.257 Thread 0x0000016effc30d50  659       4       org.lwjgl.glfw.GLFW::glfwWindowShouldClose (29 bytes)
 Event: 1.258 Thread 0x0000016effc30d50 nmethod 659 0x0000016ef21e6510 code [0x0000016ef21e66a0, 0x0000016ef21e6768]

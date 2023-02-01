@@ -1,6 +1,6 @@
 package justuswalterhelk.KyuubiEditor;
 
-import justuswalterhelk.KyuubiForge.core.ApplicationSpecification;
+import justuswalterhelk.KyuubiForge.Core.ApplicationSpecification;
 
 public class KyuubiEditorApp
 {

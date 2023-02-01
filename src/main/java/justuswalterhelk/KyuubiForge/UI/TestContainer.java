@@ -1,8 +1,8 @@
-package justuswalterhelk.KyuubiForge.gui;
+package justuswalterhelk.KyuubiForge.UI;
 
-import justuswalterhelk.KyuubiForge.input.Key;
-import justuswalterhelk.KyuubiForge.input.KeyListener;
-import justuswalterhelk.KyuubiForge.rendering.Shader;
+import justuswalterhelk.KyuubiForge.Input.Key;
+import justuswalterhelk.KyuubiForge.Input.KeyListener;
+import justuswalterhelk.KyuubiForge.Renderer.Shader;
 import org.lwjgl.BufferUtils;
 
 import java.nio.FloatBuffer;
@@ -82,6 +82,7 @@ public class TestContainer extends Container {
     @Override
     public void update(float deltaTime)
     {
+        //System.out.println("[KyuubiForge] Container updated with " + deltaTime);
         if(KeyListener.isKeyPressed(Key.R.getValue()))
         {
             //Reload Shader

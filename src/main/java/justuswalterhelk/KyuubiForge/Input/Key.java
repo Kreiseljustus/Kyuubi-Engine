@@ -1,4 +1,4 @@
-package justuswalterhelk.KyuubiForge.input;
+package justuswalterhelk.KyuubiForge.Input;
 
 public enum Key
 {

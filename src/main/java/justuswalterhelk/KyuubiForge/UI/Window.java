@@ -1,8 +1,8 @@
-package justuswalterhelk.KyuubiForge.gui;
+package justuswalterhelk.KyuubiForge.UI;
 
-import justuswalterhelk.KyuubiForge.core.Application;
-import justuswalterhelk.KyuubiForge.core.Time;
-import justuswalterhelk.KyuubiForge.input.KeyListener;
+import justuswalterhelk.KyuubiForge.Core.Application;
+import justuswalterhelk.KyuubiForge.Core.Time;
+import justuswalterhelk.KyuubiForge.Input.KeyListener;
 import org.lwjgl.glfw.GLFWErrorCallback;
 import org.lwjgl.opengl.GL;
 
@@ -90,7 +90,7 @@ public class Window
         glfwMakeContextCurrent(window);
 
         //V-Sync
-        //glfwSwapInterval(1);
+        glfwSwapInterval(1);
 
         //Show the window
         glfwShowWindow(window);
@@ -145,6 +145,7 @@ public class Window
                 //Update?
             for (Container e : containers)
             {
+                //System.out.println("[KyuubiForge] " + dt/1);
                 e.update(dt);
             }
         }

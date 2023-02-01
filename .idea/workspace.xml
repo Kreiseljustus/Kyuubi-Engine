@@ -5,9 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="02900dda-03a4-4437-98fc-b059318dfb24" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/justuswalterhelk/KyuubiForge/Core/TimeStep.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/justuswalterhelk/KyuubiForge/Renderer/Camera.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/justuswalterhelk/KyuubiForge/Renderer/EditorCamera.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/justuswalterhelk/KyuubiEditor/KyuubiEditorApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/justuswalterhelk/KyuubiEditor/KyuubiEditorApp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/justuswalterhelk/KyuubiForge/core/ApplicationSpecification.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/justuswalterhelk/KyuubiForge/core/ApplicationSpecification.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hs_err_pid12176.log" beforeDir="false" afterPath="$PROJECT_DIR$/hs_err_pid12176.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/justuswalterhelk/KyuubiEditor/KyuubiEditor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/justuswalterhelk/KyuubiEditor/KyuubiEditor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/justuswalterhelk/KyuubiEditor/KyuubiEditorApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/justuswalterhelk/KyuubiEditor/KyuubiEditorApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/justuswalterhelk/KyuubiForge/core/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/justuswalterhelk/KyuubiForge/Core/Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/justuswalterhelk/KyuubiForge/core/ApplicationCommandLineArgs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/justuswalterhelk/KyuubiForge/Core/ApplicationCommandLineArgs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/justuswalterhelk/KyuubiForge/core/ApplicationSpecification.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/justuswalterhelk/KyuubiForge/Core/ApplicationSpecification.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/justuswalterhelk/KyuubiForge/core/Time.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/justuswalterhelk/KyuubiForge/Core/Time.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/justuswalterhelk/KyuubiForge/core/status/PlayInEditor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/justuswalterhelk/KyuubiForge/Core/status/PlayInEditor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/justuswalterhelk/KyuubiForge/gui/Container.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/justuswalterhelk/KyuubiForge/UI/Container.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/justuswalterhelk/KyuubiForge/gui/TestContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/justuswalterhelk/KyuubiForge/UI/TestContainer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/justuswalterhelk/KyuubiForge/gui/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/justuswalterhelk/KyuubiForge/UI/Window.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/justuswalterhelk/KyuubiForge/gui/WindowHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/justuswalterhelk/KyuubiForge/UI/WindowHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/justuswalterhelk/KyuubiForge/input/Key.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/justuswalterhelk/KyuubiForge/Input/Key.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/justuswalterhelk/KyuubiForge/input/KeyListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/justuswalterhelk/KyuubiForge/Input/KeyListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/justuswalterhelk/KyuubiForge/input/MouseListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/justuswalterhelk/KyuubiForge/Input/MouseListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/justuswalterhelk/KyuubiForge/rendering/Shader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/justuswalterhelk/KyuubiForge/Renderer/Shader.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,6 +71,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -83,7 +101,7 @@
 }</component>
   <component name="RunManager" selected="Application.main">
     <configuration name="main" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="io.github.justuswalterhelk.KyuubiEditor.KyuubiEditorApp" />
+      <option name="MAIN_CLASS_NAME" value="justuswalterhelk.KyuubiEditor.KyuubiEditorApp" />
       <module name="Foxfire.main" />
       <option name="VM_PARAMETERS" value="-ea" />
       <method v="2">
