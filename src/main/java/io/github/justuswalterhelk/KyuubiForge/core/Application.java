@@ -36,7 +36,6 @@ public class Application
     {
         System.out.println("[KyuubiEditor] Shutting down update loop");
         m_Running = false;
-
         //Shutdown Renderer
     }
 

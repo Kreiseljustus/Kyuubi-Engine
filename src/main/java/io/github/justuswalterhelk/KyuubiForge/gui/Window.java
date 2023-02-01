@@ -136,6 +136,7 @@ public class Window
         if(glfwWindowShouldClose(window))
         {
             OnClose();
+            return;
         }
 
             //Clear color
@@ -161,17 +162,23 @@ public class Window
     public void OnClose()
     {
         s_WindowNumber -= 1;
-        //Free the callbacks and destroy window
-        glfwFreeCallbacks(window);
-        glfwDestroyWindow(window);
 
-        System.out.println("Destroyed window with id of " + window);
-        //Destroy glfw
-        //May need some refactoring when working with multiple windows
-        //will destroy EVERY window
         if(s_WindowNumber <= 0) {
             Application.Get().OnClose();
+
+            glfwFreeCallbacks(window);
+            glfwDestroyWindow(window);
+
+            System.out.println("[KyuubiForge] Destroyed window [" + window + "]");
+
             glfwTerminate();
+        }
+        else
+        {
+            glfwFreeCallbacks(window);
+            glfwDestroyWindow(window);
+
+            System.out.println("[KyuubiForge] Destroyed window [" + window + "]");
         }
     }
 }
