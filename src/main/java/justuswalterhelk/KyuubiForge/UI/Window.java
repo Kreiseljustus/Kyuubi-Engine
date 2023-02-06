@@ -125,7 +125,7 @@ public class Window
     float endTime;
     float dt = -1.0f;
 
-    public void OnUpdate()
+    public void OnUpdate(long deltaTime)
     {
         //Can be called from any thread!
         //Process all events that are still in the queue

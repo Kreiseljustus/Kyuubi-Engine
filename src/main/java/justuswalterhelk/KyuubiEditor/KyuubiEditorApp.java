@@ -7,7 +7,7 @@ public class KyuubiEditorApp
     public static void main(String[] args) {
         ApplicationSpecification specs = new ApplicationSpecification();
         specs.SetName("KyuubiEditor");
-        specs.SetFullScreen(true);
+        specs.SetFullScreen(false);
         KyuubiEditor editor = new KyuubiEditor(specs);
         editor.Run();
     }

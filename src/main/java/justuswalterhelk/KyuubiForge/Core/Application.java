@@ -39,6 +39,8 @@ public class Application
         //Shutdown Renderer
     }
 
+     static long m_LastTime = System.nanoTime();
+
     public void Run()
     {
         m_Window.initWindow().addContainer(new TestContainer()).initContainers().run();
@@ -46,7 +48,10 @@ public class Application
 
         while(m_Running)
         {
-            m_Window.OnUpdate();
+            long time = System.nanoTime();
+            long delta_time = ((time-m_LastTime) / 1000000);
+            m_LastTime = time;
+            m_Window.OnUpdate(delta_time);
         }
     }
 

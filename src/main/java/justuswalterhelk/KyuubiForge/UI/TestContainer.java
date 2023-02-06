@@ -2,7 +2,11 @@ package justuswalterhelk.KyuubiForge.UI;
 
 import justuswalterhelk.KyuubiForge.Input.Key;
 import justuswalterhelk.KyuubiForge.Input.KeyListener;
+import justuswalterhelk.KyuubiForge.Input.MouseListener;
+import justuswalterhelk.KyuubiForge.Renderer.Camera;
+import justuswalterhelk.KyuubiForge.Renderer.EditorCamera;
 import justuswalterhelk.KyuubiForge.Renderer.Shader;
+import org.joml.Vector3f;
 import org.lwjgl.BufferUtils;
 
 import java.nio.FloatBuffer;
@@ -15,6 +19,8 @@ import static org.lwjgl.opengl.GL30.glGenVertexArrays;
 public class TestContainer extends Container {
 
     private Shader shader = null;
+
+    private EditorCamera camera;
 
     //Normalized Device Coordinates!
     private float[] vertexArray =
@@ -44,6 +50,7 @@ public class TestContainer extends Container {
     @Override
     public void init()
     {
+        this.camera = new EditorCamera(new Vector3f(0.0f,0.0f, -1f));
         System.out.println("Initializing " + containerName);
 
         shader = new Shader("assets/shaders/default.glsl");
@@ -79,6 +86,8 @@ public class TestContainer extends Container {
         glEnableVertexAttribArray(1);
     }
 
+    private float cameraSpeed = 0.5f;
+
     @Override
     public void update(float deltaTime)
     {
@@ -89,7 +98,28 @@ public class TestContainer extends Container {
             shader.reload();
         }
 
+        if(KeyListener.isKeyPressed(Key.A.getValue()))
+        {
+            camera.m_Position.x += cameraSpeed * deltaTime;
+        }
+        if(KeyListener.isKeyPressed(Key.D.getValue()))
+        {
+            camera.m_Position.x -= cameraSpeed * deltaTime;
+        }
+        if(KeyListener.isKeyPressed(Key.W.getValue()))
+        {
+            camera.m_Position.y += cameraSpeed * deltaTime;
+        }
+        if(KeyListener.isKeyPressed(Key.S.getValue()))
+        {
+            camera.m_Position.y -= cameraSpeed * deltaTime;
+        }
+
+        //if(MouseListener.get().)
+
         shader.use();
+        shader.uploadMat4f("uProjection", camera.GetProjection());
+        shader.uploadMat4f("uView", camera.GetViewMatrix());
         //Bind vao
         glBindVertexArray(vaoID);
 
