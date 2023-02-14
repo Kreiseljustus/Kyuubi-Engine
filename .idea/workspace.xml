@@ -6,15 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="02900dda-03a4-4437-98fc-b059318dfb24" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/shaders/default.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/assets/shaders/default.glsl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/justuswalterhelk/KyuubiEditor/KyuubiEditorApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/justuswalterhelk/KyuubiEditor/KyuubiEditorApp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/justuswalterhelk/KyuubiForge/Core/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/justuswalterhelk/KyuubiForge/Core/Application.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/justuswalterhelk/KyuubiForge/Input/MouseListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/justuswalterhelk/KyuubiForge/Input/MouseListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/justuswalterhelk/KyuubiForge/Renderer/Camera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/justuswalterhelk/KyuubiForge/Renderer/Camera.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/justuswalterhelk/KyuubiForge/Renderer/EditorCamera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/justuswalterhelk/KyuubiForge/Renderer/EditorCamera.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/justuswalterhelk/KyuubiForge/Renderer/Shader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/justuswalterhelk/KyuubiForge/Renderer/Shader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/justuswalterhelk/KyuubiForge/UI/TestContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/justuswalterhelk/KyuubiForge/UI/TestContainer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/justuswalterhelk/KyuubiForge/UI/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/justuswalterhelk/KyuubiForge/UI/Window.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,6 +53,7 @@
       <list>
         <option value="Enum" />
         <option value="Interface" />
+        <option value="AnnotationType" />
         <option value="Class" />
       </list>
     </option>
