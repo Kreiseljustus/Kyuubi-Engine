@@ -30,7 +30,7 @@ public class Window
 
     private final boolean fullScreen;
 
-    private static int s_WindowNumber = 0;
+    private static int windowNumber = 0;
 
     public long getWindowID() {
         return window;
@@ -47,14 +47,6 @@ public class Window
         this.fullScreen = fullScreen;
     }
 
-    public Window run()
-    {
-        System.out.println("Running window with id of " + window);
-        glfwSetWindowTitle(window, this.title += " ([Debug]: Current Window: " + window + " )");
-
-        return this;
-    }
-
     public Window initWindow()
     {
         //Print errors to console
@@ -64,7 +56,7 @@ public class Window
         if(!glfwInit())
         {
             assert false : "[KyuubiForge] Failed to initialize GLFW! Restart required.";
-            throw new IllegalStateException("Initalizing GLFW failed!");
+            throw new IllegalStateException("Initializing GLFW failed!");
         }
 
         //Reset all hints to their default values
@@ -83,7 +75,7 @@ public class Window
         //TODO: Add monitor and share to constructor
         //Create the window and save its id in a long
         window = glfwCreateWindow(this.width,this.height,this.title, NULL,NULL);
-        s_WindowNumber += 1;
+        windowNumber += 1;
         if(window == NULL)
         {
             assert false : "[KyuubiForge] Failed to create window!";
@@ -139,7 +131,7 @@ public class Window
 
         if(glfwWindowShouldClose(window))
         {
-            OnClose();
+            this.onClose();
             return;
         }
 
@@ -163,12 +155,12 @@ public class Window
         beginTime = endTime;
     }
 
-    public void OnClose()
+    public void onClose()
     {
-        s_WindowNumber -= 1;
+        windowNumber -= 1;
 
-        if(s_WindowNumber <= 0) {
-            Application.Get().OnClose();
+        if(windowNumber <= 0) {
+            Application.get().onClose();
 
             glfwFreeCallbacks(window);
             glfwDestroyWindow(window);

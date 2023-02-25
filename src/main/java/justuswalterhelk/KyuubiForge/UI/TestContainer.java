@@ -94,10 +94,6 @@ public class TestContainer extends Container {
 
     @Override
     public void update(float deltaTime) {
-        for(int i = 0; i < 100000000; i++)
-        {
-            int a = i^10 + i * i / 100;
-        }
 
         //System.out.println("[KyuubiForge] Container updated with " + deltaTime);
         if(KeyListener.isKeyPressed(Key.R.getValue()))

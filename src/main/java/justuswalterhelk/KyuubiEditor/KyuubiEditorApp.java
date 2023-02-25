@@ -9,6 +9,6 @@ public class KyuubiEditorApp
         specs.SetName("KyuubiEditor");
         specs.SetFullScreen(false);
         KyuubiEditor editor = new KyuubiEditor(specs);
-        editor.Run();
+        editor.run();
     }
 }

@@ -9,47 +9,47 @@ import justuswalterhelk.KyuubiForge.UI.Window;
  */
 public class Application
 {
-    private Window m_Window = null;
+    private Window window = null;
 
-    private final ApplicationSpecification m_ApplicationSpecification;
-    public ApplicationSpecification GetSpecification() {return m_ApplicationSpecification;}
+    private final ApplicationSpecification applicationSpecification;
+    public ApplicationSpecification getSpecification() {return applicationSpecification;}
 
-    private static Application s_Instance = null;
+    private static Application instance = null;
 
-    public Window GetWindow() { return m_Window;}
+    public Window getWindow() { return window;}
 
-    private boolean m_Running = true;
+    private boolean running = true;
 
     public Application(ApplicationSpecification specification)
     {
-        s_Instance = this;
+        instance = this;
 
-        m_ApplicationSpecification = specification;
+        applicationSpecification = specification;
 
-        m_Window = new Window(specification.getWidth(), specification.getHeight(), specification.getName(), specification.isFullScreen());
+        window = new Window(specification.getWidth(), specification.getHeight(), specification.getName(), specification.isFullScreen());
 
         //Initalize Renderer
 
         //Create ImGui Layer
     }
 
-    public static Application Get() { return s_Instance;}
+    public static Application get() { return instance;}
 
-    public void OnClose()
+    public void onClose()
     {
         System.out.println("[KyuubiEditor] Shutting down update loop");
-        m_Running = false;
+        running = false;
         //Shutdown Renderer
     }
 
-    public void Run()
+    public void run()
     {
-        m_Window.initWindow().addContainer(new TestContainer()).initContainers().run();
+        window.initWindow().addContainer(new TestContainer()).initContainers();
         System.out.println("[KyuubiEditor] Initialized main window");
 
-        while(m_Running)
+        while(running)
         {
-            m_Window.Update();
+            window.Update();
         }
     }
 
