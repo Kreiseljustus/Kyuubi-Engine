@@ -3,6 +3,10 @@ package justuswalterhelk.KyuubiForge.Core;
 import justuswalterhelk.KyuubiForge.UI.TestContainer;
 import justuswalterhelk.KyuubiForge.UI.Window;
 
+
+/*
+    This class needs to get reworked at some point
+ */
 public class Application
 {
     private Window m_Window = null;
@@ -15,7 +19,6 @@ public class Application
     public Window GetWindow() { return m_Window;}
 
     private boolean m_Running = true;
-    private float m_LastFrameTime = 0.0f;
 
     public Application(ApplicationSpecification specification)
     {
@@ -39,8 +42,6 @@ public class Application
         //Shutdown Renderer
     }
 
-     static long m_LastTime = System.nanoTime();
-
     public void Run()
     {
         m_Window.initWindow().addContainer(new TestContainer()).initContainers().run();
@@ -48,10 +49,7 @@ public class Application
 
         while(m_Running)
         {
-            long time = System.nanoTime();
-            long delta_time = ((time-m_LastTime) / 1000000);
-            m_LastTime = time;
-            m_Window.OnUpdate(delta_time);
+            m_Window.Update();
         }
     }
 

@@ -2,8 +2,6 @@ package justuswalterhelk.KyuubiForge.UI;
 
 import justuswalterhelk.KyuubiForge.Input.Key;
 import justuswalterhelk.KyuubiForge.Input.KeyListener;
-import justuswalterhelk.KyuubiForge.Input.MouseListener;
-import justuswalterhelk.KyuubiForge.Renderer.Camera;
 import justuswalterhelk.KyuubiForge.Renderer.EditorCamera;
 import justuswalterhelk.KyuubiForge.Renderer.Shader;
 import org.joml.Vector3f;
@@ -16,6 +14,12 @@ import static org.lwjgl.opengl.GL20.*;
 import static org.lwjgl.opengl.GL30.glBindVertexArray;
 import static org.lwjgl.opengl.GL30.glGenVertexArrays;
 
+
+/*
+    This class needs to get reworked at some point.
+    This class will not be included in the production release of the engine,
+    it´s currently used for testing purposes only!
+ */
 public class TestContainer extends Container {
 
     private Shader shader = null;
@@ -89,8 +93,12 @@ public class TestContainer extends Container {
     private float cameraSpeed = 0.5f;
 
     @Override
-    public void update(float deltaTime)
-    {
+    public void update(float deltaTime) {
+        for(int i = 0; i < 100000000; i++)
+        {
+            int a = i^10 + i * i / 100;
+        }
+
         //System.out.println("[KyuubiForge] Container updated with " + deltaTime);
         if(KeyListener.isKeyPressed(Key.R.getValue()))
         {
@@ -126,11 +134,10 @@ public class TestContainer extends Container {
         //Enable vertex attr
         glEnableVertexAttribArray(0);
         glEnableVertexAttribArray(1);
-
         //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
         glDrawElements(GL_TRIANGLES, elementArray.length, GL_UNSIGNED_INT, 0);
 
-        //Unbind clearup
+        //Unbind clear up
         glDisableVertexAttribArray(0);
         glDisableVertexAttribArray(1);
         glBindVertexArray(0);

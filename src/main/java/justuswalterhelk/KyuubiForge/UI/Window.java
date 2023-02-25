@@ -14,6 +14,12 @@ import static org.lwjgl.glfw.Callbacks.glfwFreeCallbacks;
 import static org.lwjgl.glfw.GLFW.*;
 import static org.lwjgl.opengl.GL11.*;
 
+/*
+    This class needs to get reworked at some point.
+    Maybe add Object that just contains the window settings
+
+    Figure out FPS cap per window
+ */
 public class Window
 {
     private final int width;
@@ -57,7 +63,7 @@ public class Window
         //Initialize GLFW
         if(!glfwInit())
         {
-            //TODO: Add a warning in the engine debugger
+            assert false : "[KyuubiForge] Failed to initialize GLFW! Restart required.";
             throw new IllegalStateException("Initalizing GLFW failed!");
         }
 
@@ -80,7 +86,7 @@ public class Window
         s_WindowNumber += 1;
         if(window == NULL)
         {
-            //TODO: Add a warning in the engine debugger
+            assert false : "[KyuubiForge] Failed to create window!";
             throw new IllegalStateException("Failed to create window");
         }
 
@@ -125,7 +131,7 @@ public class Window
     float endTime;
     float dt = -1.0f;
 
-    public void OnUpdate(long deltaTime)
+    public void Update()
     {
         //Can be called from any thread!
         //Process all events that are still in the queue
@@ -155,7 +161,6 @@ public class Window
         endTime = Time.getTime();
         dt = endTime - beginTime;
         beginTime = endTime;
-
     }
 
     public void OnClose()

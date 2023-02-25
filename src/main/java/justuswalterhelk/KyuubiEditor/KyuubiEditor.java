@@ -7,5 +7,6 @@ public class KyuubiEditor extends Application {
     public KyuubiEditor(ApplicationSpecification specification)
     {
         super(specification);
+        System.out.println("[KyuubiEditor] Initializing application");
     }
 }
