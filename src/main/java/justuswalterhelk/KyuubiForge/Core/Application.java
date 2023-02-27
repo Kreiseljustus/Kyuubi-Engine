@@ -1,7 +1,6 @@
 package justuswalterhelk.KyuubiForge.Core;
 
 import justuswalterhelk.KyuubiForge.UI.TestContainer;
-import justuswalterhelk.KyuubiForge.UI.Window;
 
 
 /*
@@ -26,7 +25,7 @@ public class Application
 
         applicationSpecification = specification;
 
-        window = new Window(specification.getWidth(), specification.getHeight(), specification.getName(), specification.isFullScreen());
+        window = new Window(specification.mainWindowSpecification);
 
         //Initalize Renderer
 

@@ -2,39 +2,34 @@ package justuswalterhelk.KyuubiForge.Core;
 
 public class ApplicationSpecification
 {
-    private String m_Name = "KyuubiForge (Development Version)";
-    private String m_WorkingDirectory = System.getProperty("user.dir");
-    private ApplicationCommandLineArgs m_CommandLineArgs;
+    public ApplicationSpecification(String name, WindowSpecification windowSpecification)
+    {
+        this.name = name;
+        this.mainWindowSpecification = windowSpecification;
+    }
 
-    private int m_Width = 1080;
-    private int m_Height = 1920;
+    private String name = "KyuubiForge (Development Version)";
+    private String workingDirectory = System.getProperty("user.dir");
+    private ApplicationCommandLineArgs commandLineArgs;
 
-    private boolean m_FullScreen = true;
+    public WindowSpecification mainWindowSpecification = null;
 
     public String getName()
     {
-        return m_Name;
+        return name;
     }
 
     public String getWorkingDirectory()
     {
-        return m_WorkingDirectory;
+        return workingDirectory;
     }
-
-    public int getWidth() {return m_Width;}
-    public int getHeight() {return m_Height;}
-
-    public boolean isFullScreen() {return m_FullScreen;}
 
     public ApplicationCommandLineArgs getCommandLineArgs()
     {
-        return m_CommandLineArgs;
+        return commandLineArgs;
     }
 
-    public void SetName(String name) {m_Name = name;}
-    public void SetWorkingDirectory(String workingDirectory) {m_WorkingDirectory = workingDirectory;}
-    public void SetCommandLineArgs(ApplicationCommandLineArgs commandLineArgs) {m_CommandLineArgs = commandLineArgs;}
-    public void SetWidth(int width) {m_Width = width;}
-    public void SetHeight(int height) {m_Height = height;}
-    public void SetFullScreen(boolean fullScreen) {m_FullScreen = fullScreen;}
+    public void setName(String name) {name = name;}
+    public void setWorkingDirectory(String workingDirectory) {workingDirectory = workingDirectory;}
+    public void setCommandLineArgs(ApplicationCommandLineArgs commandLineArgs) {commandLineArgs = commandLineArgs;}
 }

@@ -90,7 +90,7 @@ public class TestContainer extends Container {
         glEnableVertexAttribArray(1);
     }
 
-    private float cameraSpeed = 0.5f;
+     float cameraSpeed = 0.5f;
 
     @Override
     public void update(float deltaTime) {
@@ -104,26 +104,26 @@ public class TestContainer extends Container {
 
         if(KeyListener.isKeyPressed(Key.A.getValue()))
         {
-            camera.m_Position.x += cameraSpeed * deltaTime;
+            camera.position.x += cameraSpeed * deltaTime;
         }
         if(KeyListener.isKeyPressed(Key.D.getValue()))
         {
-            camera.m_Position.x -= cameraSpeed * deltaTime;
+            camera.position.x -= cameraSpeed * deltaTime;
         }
         if(KeyListener.isKeyPressed(Key.W.getValue()))
         {
-            camera.m_Position.y += cameraSpeed * deltaTime;
+            camera.position.y += cameraSpeed * deltaTime;
         }
         if(KeyListener.isKeyPressed(Key.S.getValue()))
         {
-            camera.m_Position.y -= cameraSpeed * deltaTime;
+            camera.position.y -= cameraSpeed * deltaTime;
         }
 
         //if(MouseListener.get().)
 
         shader.use();
-        shader.uploadMat4f("uProjection", camera.GetProjection());
-        shader.uploadMat4f("uView", camera.GetViewMatrix());
+        shader.uploadMat4f("uProjection", camera.getProjectionMatrix());
+        shader.uploadMat4f("uView", camera.getViewMatrix());
         //Bind vao
         glBindVertexArray(vaoID);
 

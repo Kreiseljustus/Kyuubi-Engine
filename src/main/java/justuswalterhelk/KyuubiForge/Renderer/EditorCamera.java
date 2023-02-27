@@ -1,67 +1,38 @@
 package justuswalterhelk.KyuubiForge.Renderer;
 
 import org.joml.Matrix4f;
+import org.joml.Vector2f;
 import org.joml.Vector3f;
 
 public class EditorCamera extends Camera
 {
-    private Matrix4f m_ViewMatrix;
-    public Vector3f m_Position;
+    private float viewportWidth = 1280;
+    private float viewportHeight = 720;
 
-    private float m_ViewportWidth = 1280;
-    private float m_ViewportHeight = 720;
-
-    public EditorCamera(Vector3f position, float fov, float aspectRatio, float nearClip, float farClip)
-    {
-        this.m_Position = position;
-        this.m_ProjectionMatrix = new Matrix4f();
-        this.m_ViewMatrix = new Matrix4f();
+    public EditorCamera(Vector3f position) {
+        this.position = position;
+        this.projectionMatrix = new Matrix4f();
+        this.viewMatrix = new Matrix4f();
+        adjustProjection();
     }
 
-    public EditorCamera(Vector3f position)
-    {
-        this.m_Position = position;
-        this.m_ProjectionMatrix = new Matrix4f();
-        this.m_ViewMatrix = new Matrix4f();
+    public void adjustProjection() {
+        projectionMatrix.identity();
+        projectionMatrix.ortho(0.0f, viewportWidth, 0.0f, viewportHeight, 0.0f, 1000.0f);
     }
 
-    public void SetViewPortSize(float width, float height)
-    {
-        m_ViewportWidth = width;
-        m_ViewportHeight = height;
+    public Matrix4f getViewMatrix() {
+        Vector3f cameraFront = new Vector3f(0.0f, 0.0f, -1.0f);
+        Vector3f cameraUp = new Vector3f(0.0f, 1.0f, 0.0f);
+        this.viewMatrix.identity();
+        viewMatrix.lookAt(new Vector3f(position.x, position.y, 20.0f),
+                cameraFront.add(position.x, position.y, 0.0f),
+                cameraUp);
 
-        //Update Projection?
-
+        return this.viewMatrix;
     }
 
-    public Matrix4f GetViewMatrix()
-    {
-        Vector3f cameraFront = new Vector3f(0.0f,0.0f, -1.0f);
-        Vector3f cameraUp = new Vector3f(0.0f,1.0f,0.0f);
-        this.m_ViewMatrix.identity();
-        this.m_ViewMatrix = m_ViewMatrix.lookAt(new Vector3f(m_Position.x, m_Position.y, m_Position.z), cameraFront.add(m_Position.x,m_Position.y,m_Position.z), cameraUp);
-        return m_ViewMatrix;
+    public Matrix4f getProjectionMatrix() {
+        return this.projectionMatrix;
     }
-
-    public Matrix4f GetViewProjection()
-    {
-        return null;
-    }
-
-    public Vector3f GetPosition()
-    {
-        return m_Position;
-    }
-
-    private void UpdateProjection()
-    {
-        m_ProjectionMatrix.identity();
-        m_ProjectionMatrix.ortho(0.0f, m_ViewportWidth, 0.0f, m_ViewportHeight, 0.1f, 1000);
-    }
-
-    private Vector3f CalculatePosition()
-    {
-        return null;
-    }
-
 }
