@@ -3,7 +3,7 @@
 Find out more at our [Website!](https://kyuubi-engine.com)
 
 ## About
-Kyuubi is a simple 2D Engine built in Java 17.
+Kyuubi is a simple 2D Engine (with editor) built in Java 17.
 
 (There may be 3D Support in the future)
 
