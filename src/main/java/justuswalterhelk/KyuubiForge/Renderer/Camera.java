@@ -8,10 +8,4 @@ public abstract class Camera
     protected Matrix4f projectionMatrix = new Matrix4f();
     protected Matrix4f viewMatrix = new Matrix4f();
     public Vector3f position = new Vector3f();
-
-    public Camera() {}
-    public Camera(Matrix4f projection)
-    {
-        projectionMatrix = projection;
-    }
 }

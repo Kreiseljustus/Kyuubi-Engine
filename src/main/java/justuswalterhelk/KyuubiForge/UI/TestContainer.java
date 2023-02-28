@@ -30,10 +30,10 @@ public class TestContainer extends Container {
     private float[] vertexArray =
             {
                 //position                  //color
-                0.5f, -0.5f, 0.0f,           0.0f,1.0f, 1.0f, 1.0f,
-                -0.5f, 0.5f, 0.0f,            0.0f, 1.0f,0.0f, 1.0f,
-                0.5f, 0.5f, 0.0f,             0.0f, 0.0f, 1.0f, 1.0f,
-                -0.5f, -0.5f, 0.0f,          1.0f, 1.0f, 0.0f, 1.0f,
+                100.5f, -100.5f, 0.0f,           0.0f,1.0f, 1.0f, 1.0f,
+                -100.5f, 100.5f, 0.0f,            0.0f, 1.0f,0.0f, 1.0f,
+                100.5f, 0.5f, 0.0f,             0.0f, 0.0f, 1.0f, 1.0f,
+                -100.5f, -0.5f, 0.0f,          1.0f, 1.0f, 0.0f, 1.0f,
             };
 
     //COUNTER CLOCKWISE!
@@ -54,7 +54,7 @@ public class TestContainer extends Container {
     @Override
     public void init()
     {
-        this.camera = new EditorCamera(new Vector3f(0.0f,0.0f, -1f));
+        this.camera = new EditorCamera(new Vector3f(-600.0f,-300.0f, 0.1f));
         System.out.println("Initializing " + containerName);
 
         shader = new Shader("assets/shaders/default.glsl");
@@ -90,7 +90,7 @@ public class TestContainer extends Container {
         glEnableVertexAttribArray(1);
     }
 
-     float cameraSpeed = 0.5f;
+     float cameraSpeed = 2f;
 
     @Override
     public void update(float deltaTime) {
@@ -104,19 +104,19 @@ public class TestContainer extends Container {
 
         if(KeyListener.isKeyPressed(Key.A.getValue()))
         {
-            camera.position.x += cameraSpeed * deltaTime;
+            camera.position.x -= cameraSpeed * deltaTime * 20f;
         }
         if(KeyListener.isKeyPressed(Key.D.getValue()))
         {
-            camera.position.x -= cameraSpeed * deltaTime;
+            camera.position.x += cameraSpeed * deltaTime * 20f;
         }
         if(KeyListener.isKeyPressed(Key.W.getValue()))
         {
-            camera.position.y += cameraSpeed * deltaTime;
+            camera.position.y -= cameraSpeed * deltaTime * 20f;
         }
         if(KeyListener.isKeyPressed(Key.S.getValue()))
         {
-            camera.position.y -= cameraSpeed * deltaTime;
+            camera.position.y += cameraSpeed * deltaTime * 20f;
         }
 
         //if(MouseListener.get().)
