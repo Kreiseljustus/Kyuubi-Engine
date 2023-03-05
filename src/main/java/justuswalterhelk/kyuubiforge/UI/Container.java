@@ -1,4 +1,4 @@
-package justuswalterhelk.KyuubiForge.UI;
+package justuswalterhelk.kyuubiforge.UI;
 
 public abstract class Container
 {

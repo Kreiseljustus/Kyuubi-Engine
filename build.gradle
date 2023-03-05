@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id 'application'
 }
 
 group 'io.github.justuswalterhelk'
@@ -9,13 +10,8 @@ repositories {
     mavenCentral()
 }
 
-dependencies {
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
-}
-
-test {
-    useJUnitPlatform()
+application {
+    mainClass = 'justuswalterhelk.kyuubieditor.KyuubieditorApp'
 }
 
 project.ext.lwjglVersion = "3.3.1"

@@ -1,4 +1,4 @@
-package justuswalterhelk.KyuubiForge.Core;
+package justuswalterhelk.kyuubiforge.Core;
 
 import java.util.Arrays;
 import java.util.List;

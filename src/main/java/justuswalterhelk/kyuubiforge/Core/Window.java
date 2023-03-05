@@ -1,7 +1,7 @@
-package justuswalterhelk.KyuubiForge.Core;
+package justuswalterhelk.kyuubiforge.Core;
 
-import justuswalterhelk.KyuubiForge.Input.KeyListener;
-import justuswalterhelk.KyuubiForge.UI.Container;
+import justuswalterhelk.kyuubiforge.Input.KeyListener;
+import justuswalterhelk.kyuubiforge.UI.Container;
 import org.lwjgl.glfw.GLFWErrorCallback;
 import org.lwjgl.opengl.GL;
 

@@ -1,7 +1,7 @@
-package justuswalterhelk.KyuubiEditor;
+package justuswalterhelk.kyuubieditor;
 
-import justuswalterhelk.KyuubiForge.Core.Application;
-import justuswalterhelk.KyuubiForge.Core.ApplicationSpecification;
+import justuswalterhelk.kyuubiforge.Core.Application;
+import justuswalterhelk.kyuubiforge.Core.ApplicationSpecification;
 
 public class KyuubiEditor extends Application {
     public KyuubiEditor(ApplicationSpecification specification)

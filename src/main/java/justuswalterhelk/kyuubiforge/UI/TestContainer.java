@@ -1,9 +1,9 @@
-package justuswalterhelk.KyuubiForge.UI;
+package justuswalterhelk.kyuubiforge.UI;
 
-import justuswalterhelk.KyuubiForge.Input.Key;
-import justuswalterhelk.KyuubiForge.Input.KeyListener;
-import justuswalterhelk.KyuubiForge.Renderer.EditorCamera;
-import justuswalterhelk.KyuubiForge.Renderer.Shader;
+import justuswalterhelk.kyuubiforge.Input.Key;
+import justuswalterhelk.kyuubiforge.Input.KeyListener;
+import justuswalterhelk.kyuubiforge.Renderer.EditorCamera;
+import justuswalterhelk.kyuubiforge.Renderer.Shader;
 import org.joml.Vector3f;
 import org.lwjgl.BufferUtils;
 
@@ -118,8 +118,6 @@ public class TestContainer extends Container {
         {
             camera.position.y += cameraSpeed * deltaTime * 20f;
         }
-
-        //if(MouseListener.get().)
 
         shader.use();
         shader.uploadMat4f("uProjection", camera.getProjectionMatrix());

@@ -1,4 +1,4 @@
-package justuswalterhelk.KyuubiForge.Renderer;
+package justuswalterhelk.kyuubiforge.Renderer;
 
 import org.joml.Matrix4f;
 import org.lwjgl.BufferUtils;

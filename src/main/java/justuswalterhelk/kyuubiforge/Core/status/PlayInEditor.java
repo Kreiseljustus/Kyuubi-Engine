@@ -1,4 +1,4 @@
-package justuswalterhelk.KyuubiForge.Core.status;
+package justuswalterhelk.kyuubiforge.Core.status;
 
 public class PlayInEditor
 {

@@ -1,6 +1,6 @@
-package justuswalterhelk.KyuubiForge.Core;
+package justuswalterhelk.kyuubiforge.Core;
 
-import justuswalterhelk.KyuubiForge.UI.TestContainer;
+import justuswalterhelk.kyuubiforge.UI.TestContainer;
 
 
 /*

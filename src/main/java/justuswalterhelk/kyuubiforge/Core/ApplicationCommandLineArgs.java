@@ -1,4 +1,4 @@
-package justuswalterhelk.KyuubiForge.Core;
+package justuswalterhelk.kyuubiforge.Core;
 
 public class ApplicationCommandLineArgs
 {
