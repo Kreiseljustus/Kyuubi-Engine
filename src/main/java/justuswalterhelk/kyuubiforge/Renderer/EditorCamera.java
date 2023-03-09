@@ -3,9 +3,8 @@ package justuswalterhelk.kyuubiforge.Renderer;
 import org.joml.Matrix4f;
 import org.joml.Vector3f;
 
-public class EditorCamera
+public class EditorCamera extends Camera
 {
-    private Matrix4f projectionMatrix, viewMatrix;
     public Vector3f position;
 
     public EditorCamera(Vector3f position) {
