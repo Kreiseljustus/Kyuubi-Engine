@@ -1,3 +1,4 @@
 rootProject.name = 'Kyuubi'
-include 'kyuubieditor'
 include 'kyuubiforge'
+include 'kyuubieditor'
+
