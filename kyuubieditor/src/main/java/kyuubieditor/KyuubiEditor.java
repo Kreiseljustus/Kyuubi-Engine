@@ -8,5 +8,6 @@ public class KyuubiEditor extends Application {
     {
         super(specification);
         System.out.println("[KyuubiEditor] Initializing application");
+        System.out.println("[KyuubiEditor][Debug] Current working directory: " + System.getProperty("user.dir"));
     }
 }
