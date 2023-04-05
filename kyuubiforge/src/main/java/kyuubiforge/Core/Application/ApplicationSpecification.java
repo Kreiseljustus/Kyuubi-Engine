@@ -1,4 +1,6 @@
-package kyuubiforge.Core;
+package kyuubiforge.Core.Application;
+
+import kyuubiforge.Core.Window.WindowSpecification;
 
 public class ApplicationSpecification
 {

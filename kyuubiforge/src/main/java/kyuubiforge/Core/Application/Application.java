@@ -1,6 +1,8 @@
-package kyuubiforge.Core;
+package kyuubiforge.Core.Application;
 
-import kyuubiforge.UI.TestContainer;
+import kyuubiforge.Core.Window.Window;
+import kyuubiforge.Core.Window.Container.TestContainer;
+import static kyuubiforge.Debug.Debug.log;
 
 /*
     This class needs to get reworked at some point
@@ -35,15 +37,15 @@ public class Application
 
     public void onClose()
     {
-        System.out.println("[KyuubiEditor] Shutting down update loop");
+        log("[KyuubiEditor] Shutting down update loop");
         running = false;
         //Shutdown Renderer
     }
 
     public void run()
     {
-        window.initWindow().addContainer(new TestContainer()).initContainers();
-        System.out.println("[KyuubiEditor] Initialized main window");
+        window.addContainer(new TestContainer()).initContainers();
+        log("[KyuubiEditor] Initialized main window");
 
         while(running)
         {

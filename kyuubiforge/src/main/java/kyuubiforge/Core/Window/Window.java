@@ -1,7 +1,10 @@
-package kyuubiforge.Core;
+package kyuubiforge.Core.Window;
 
+import kyuubiforge.Core.Application.Application;
+import kyuubiforge.Core.Time;
+import static kyuubiforge.Debug.Debug.log;
 import kyuubiforge.Input.KeyListener;
-import kyuubiforge.UI.Container;
+import kyuubiforge.Core.Window.Container.Container;
 import org.lwjgl.glfw.GLFWErrorCallback;
 import org.lwjgl.opengl.GL;
 
@@ -25,11 +28,16 @@ public class Window
 
     private static int windowNumber = 0;
 
+
+    //List that contains the current state of the window or a combination of those
+    public List<WindowState> state = new LinkedList<>();
+
     private WindowSpecification windowSpecification = null;
 
     public Window(WindowSpecification specification)
     {
         this.windowSpecification = specification;
+        initWindow();
     }
 
     public Window initWindow()
@@ -49,8 +57,11 @@ public class Window
         //Set the window properties
         glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE);
         glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE);
-        glfwWindowHint(GLFW_MAXIMIZED, windowSpecification.isFullScreen ? 1:0);
-
+        if(windowSpecification.isFullScreen)
+        {
+            state.add(WindowState.MAXIMIZED);
+            glfwWindowHint(GLFW_MAXIMIZED, GLFW_TRUE);
+        }
         //For apple ARM silicone
         //glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
         //glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
@@ -89,7 +100,7 @@ public class Window
     public Window addContainer(Container container)
     {
         containers.add(container);
-        System.out.println("Added " + container.containerName + " as a container to " + windowSpecification.windowID);
+        log("Added " + container.containerName + " as a container to " + windowSpecification.windowID);
 
         return this;
     }
@@ -151,7 +162,7 @@ public class Window
             glfwFreeCallbacks(windowSpecification.windowID);
             glfwDestroyWindow(windowSpecification.windowID);
 
-            System.out.println("[KyuubiForge] Destroyed window [" + windowSpecification.windowID + "]");
+            log("[KyuubiForge] Destroyed window [" + windowSpecification.windowID + "]");
 
             glfwTerminate();
         }
@@ -160,7 +171,7 @@ public class Window
             glfwFreeCallbacks(windowSpecification.windowID);
             glfwDestroyWindow(windowSpecification.windowID);
 
-            System.out.println("[KyuubiForge] Destroyed window [" + windowSpecification.windowID + "]");
+            log("[KyuubiForge] Destroyed window [" + windowSpecification.windowID + "]");
         }
     }
 }

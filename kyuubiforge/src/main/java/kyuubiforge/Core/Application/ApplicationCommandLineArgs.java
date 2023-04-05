@@ -1,4 +1,4 @@
-package kyuubiforge.Core;
+package kyuubiforge.Core.Application;
 
 public class ApplicationCommandLineArgs
 {

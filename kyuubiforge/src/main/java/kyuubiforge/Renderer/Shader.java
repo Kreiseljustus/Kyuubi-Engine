@@ -1,5 +1,6 @@
 package kyuubiforge.Renderer;
 
+import static kyuubiforge.Debug.Debug.log;
 import org.joml.Matrix4f;
 import org.lwjgl.BufferUtils;
 
@@ -87,7 +88,7 @@ public class Shader
         int success = glGetShaderi(vertexID, GL_COMPILE_STATUS);
         if(success == GL_FALSE) {
             int len = glGetShaderi(vertexID, GL_INFO_LOG_LENGTH);
-            System.out.println("Error in 'defaultShader.glsl' \n\tVertex shader compilation failed");
+            log("Error in 'defaultShader.glsl' \n\tVertex shader compilation failed");
             System.out.println(glGetShaderInfoLog(vertexID, len));
             assert false : "";
         }
@@ -101,7 +102,7 @@ public class Shader
         success = glGetShaderi(fragmentID, GL_COMPILE_STATUS);
         if(success == GL_FALSE) {
             int len = glGetShaderi(fragmentID, GL_INFO_LOG_LENGTH);
-            System.out.println("Error in 'defaultShader.glsl' \n\tFragment shader compilation failed");
+            log("Error in 'defaultShader.glsl' \n\tFragment shader compilation failed");
             System.out.println(glGetShaderInfoLog(fragmentID, len));
             assert false : "";
         }
@@ -117,7 +118,7 @@ public class Shader
         if(success == 0)
         {
             int length = glGetProgrami(shaderProgramID, GL_INFO_LOG_LENGTH);
-            System.out.println("Error in '"+ filePath + " ' \n\tLinking shaders failed");
+            log("Error in '"+ filePath + " ' \n\tLinking shaders failed");
             System.out.println(glGetProgramInfoLog(shaderProgramID, length));
             assert false : "";
         }

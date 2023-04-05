@@ -1,5 +1,7 @@
 package kyuubiforge.Core;
 
+import kyuubiforge.Debug.Debug;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -25,7 +27,7 @@ public class GameObject
                 }
                 catch (ClassCastException classCastException)
                 {
-                    System.out.println("[KyuubiForge] " + Arrays.toString(classCastException.getStackTrace()));
+                    Debug.log("[KyuubiForge] " + Arrays.toString(classCastException.getStackTrace()));
                     assert false : "Error: Casting Component";
                 }
             }

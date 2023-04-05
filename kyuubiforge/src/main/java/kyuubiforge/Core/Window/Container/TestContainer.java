@@ -1,5 +1,7 @@
-package kyuubiforge.UI;
+package kyuubiforge.Core.Window.Container;
 
+import kyuubiforge.Core.Window.Container.Container;
+import static kyuubiforge.Debug.Debug.log;
 import kyuubiforge.Input.Key;
 import kyuubiforge.Input.KeyListener;
 import kyuubiforge.Renderer.EditorCamera;
@@ -55,7 +57,7 @@ public class TestContainer extends Container {
     public void init()
     {
         this.camera = new EditorCamera(new Vector3f(-600.0f,-300.0f, 0.1f));
-        System.out.println("Initializing " + containerName);
+        log("Initializing " + containerName);
 
         shader = new Shader("assets/shaders/default.glsl");
 
