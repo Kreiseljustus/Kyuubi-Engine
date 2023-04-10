@@ -2,6 +2,9 @@ package kyuubiforge.Core.Window.Container;
 
 import kyuubiforge.Core.Window.Container.Container;
 import static kyuubiforge.Debug.Debug.log;
+
+import kyuubiforge.Graphics.Texture2D;
+import kyuubiforge.Graphics.TextureSettings;
 import kyuubiforge.Input.Key;
 import kyuubiforge.Input.KeyListener;
 import kyuubiforge.Renderer.EditorCamera;
@@ -25,17 +28,18 @@ import static org.lwjgl.opengl.GL30.glGenVertexArrays;
 public class TestContainer extends Container {
 
     private Shader shader = null;
+    private Texture2D texture2D;
 
     private EditorCamera camera;
 
     //Normalized Device Coordinates!
     private float[] vertexArray =
             {
-                //position                  //color
-                100.5f, -100.5f, 0.0f,           0.0f,1.0f, 1.0f, 1.0f,
-                -100.5f, 100.5f, 0.0f,            0.0f, 1.0f,0.0f, 1.0f,
-                100.5f, 0.5f, 0.0f,             0.0f, 0.0f, 1.0f, 1.0f,
-                -100.5f, -0.5f, 0.0f,          1.0f, 1.0f, 0.0f, 1.0f,
+                    // position               // color                  // UV Coordinates
+                    100f,   0f, 0.0f,       1.0f, 0.0f, 0.0f, 1.0f,     1, 1, // Bottom right 0
+                    0f, 100f, 0.0f,       0.0f, 1.0f, 0.0f, 1.0f,     0, 0, // Top left     1
+                    100f, 100f, 0.0f ,      1.0f, 0.0f, 1.0f, 1.0f,     1, 0, // Top right    2
+                    0f,   0f, 0.0f,       1.0f, 1.0f, 0.0f, 1.0f,     0, 1  // Bottom left  3
             };
 
     //COUNTER CLOCKWISE!
@@ -63,6 +67,8 @@ public class TestContainer extends Container {
 
         shader.compile();
 
+        texture2D = new Texture2D("assets/images/alpha.jpg", new TextureSettings());
+
         //Generate VAO VBO EBO buffers
         vaoID = glGenVertexArrays();
         glBindVertexArray(vaoID);
@@ -83,13 +89,16 @@ public class TestContainer extends Container {
         //vertex attribute pointers
         int positionSize = 3;
         int colorSize = 4;
-        int floatSizeBytes = 4;
-        int vertexSizeBytes = (positionSize + colorSize) * floatSizeBytes;
+        int uvSize = 2;
+        int vertexSizeBytes = (positionSize + colorSize + uvSize) * Float.BYTES;
         glVertexAttribPointer(0, positionSize, GL_FLOAT, false, vertexSizeBytes, 0);
         glEnableVertexAttribArray(0);
 
-        glVertexAttribPointer(1, colorSize, GL_FLOAT, false, vertexSizeBytes, positionSize * floatSizeBytes);
+        glVertexAttribPointer(1, colorSize, GL_FLOAT, false, vertexSizeBytes, positionSize * Float.BYTES);
         glEnableVertexAttribArray(1);
+
+        glVertexAttribPointer(2, uvSize, GL_FLOAT, false, vertexSizeBytes, (positionSize + colorSize) * Float.BYTES);
+        glEnableVertexAttribArray(2);
     }
 
      float cameraSpeed = 2f;
@@ -122,6 +131,11 @@ public class TestContainer extends Container {
         }
 
         shader.use();
+
+        shader.uploadTexture("TEX_SAMPLER", 0);
+        glActiveTexture(GL_TEXTURE0);
+        texture2D.bind();
+
         shader.uploadMat4f("uProjection", camera.getProjectionMatrix());
         shader.uploadMat4f("uView", camera.getViewMatrix());
         //Bind vao
@@ -130,12 +144,14 @@ public class TestContainer extends Container {
         //Enable vertex attr
         glEnableVertexAttribArray(0);
         glEnableVertexAttribArray(1);
+
         //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
         glDrawElements(GL_TRIANGLES, elementArray.length, GL_UNSIGNED_INT, 0);
 
         //Unbind clear up
         glDisableVertexAttribArray(0);
         glDisableVertexAttribArray(1);
+
         glBindVertexArray(0);
         shader.detach();
     }

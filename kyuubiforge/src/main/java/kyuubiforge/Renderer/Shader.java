@@ -88,7 +88,7 @@ public class Shader
         int success = glGetShaderi(vertexID, GL_COMPILE_STATUS);
         if(success == GL_FALSE) {
             int len = glGetShaderi(vertexID, GL_INFO_LOG_LENGTH);
-            log("Error in 'defaultShader.glsl' \n\tVertex shader compilation failed");
+            log("Error in '" + filePath + "' \n\tVertex shader compilation failed");
             System.out.println(glGetShaderInfoLog(vertexID, len));
             assert false : "";
         }
@@ -102,7 +102,7 @@ public class Shader
         success = glGetShaderi(fragmentID, GL_COMPILE_STATUS);
         if(success == GL_FALSE) {
             int len = glGetShaderi(fragmentID, GL_INFO_LOG_LENGTH);
-            log("Error in 'defaultShader.glsl' \n\tFragment shader compilation failed");
+            log("Error in '" + filePath + "' \n\tFragment shader compilation failed");
             System.out.println(glGetShaderInfoLog(fragmentID, len));
             assert false : "";
         }
@@ -134,6 +134,12 @@ public class Shader
         glUniformMatrix4fv(varLocation, false, matBuffer);
     }
 
+    public void uploadTexture(String varName, int slot) {
+        int varLocation = glGetUniformLocation(shaderProgramID, varName);
+        use();
+        glUniform1i(varLocation, slot);
+    }
+
     public void use()
     {
         glUseProgram(shaderProgramID);
@@ -146,8 +152,4 @@ public class Shader
         glUseProgram(0);
     }
 
-    public static HashMap<Integer, Shader> getShaders()
-    {
-        return shaders;
-    }
 }
