@@ -67,7 +67,7 @@ public class TestContainer extends Container {
 
         shader.compile();
 
-        texture2D = new Texture2D("assets/images/alpha.jpg", new TextureSettings());
+        texture2D = new Texture2D("assets/images/texture.jpg", new TextureSettings());
 
         //Generate VAO VBO EBO buffers
         vaoID = glGenVertexArrays();
