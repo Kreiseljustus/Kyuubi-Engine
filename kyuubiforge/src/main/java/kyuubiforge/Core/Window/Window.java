@@ -79,7 +79,7 @@ public class Window
             throw new IllegalStateException("Failed to create window");
         }
 
-        glfwSetKeyCallback(windowSpecification.windowID, KeyListener::keyCallback);
+        //glfwSetKeyCallback(windowSpecification.windowID, KeyListener::keyCallback);
 
         //WARNING: Needs proper handling when dealing with multiple windows on the same Thread!
         glfwMakeContextCurrent(windowSpecification.windowID);
@@ -152,6 +152,11 @@ public class Window
         beginTime = endTime;
     }
 
+    public void resize(int x, int y)
+    {
+
+    }
+
 
     public void onClose()
     {
@@ -176,5 +181,10 @@ public class Window
             System.gc();
             log("[KyuubiForge] Destroyed window [" + windowSpecification.windowID + "]");
         }
+    }
+
+    public long getWindowId()
+    {
+        return windowSpecification.windowID;
     }
 }

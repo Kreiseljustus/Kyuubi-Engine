@@ -14,6 +14,14 @@ public class KyuubiEditorApp
                 "KyuubiEditor (Development Version)");
         ApplicationSpecification specs = new ApplicationSpecification("KyuubiEditor", windowSpecification);
         KyuubiEditor editor = new KyuubiEditor(specs);
-        editor.run();
+
+        EditorSettings settings = new EditorSettings();
+        settings.window = editor.getWindow().getWindowId();
+
+        PreProcess process = new PreProcess();
+        process.init(settings);
+        process.run();
+
+        //editor.run();
     }
 }

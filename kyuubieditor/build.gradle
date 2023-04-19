@@ -38,4 +38,5 @@ task fullEditor(type: Jar)
 
 dependencies {
     implementation project(':kyuubiforge')
+    implementation "io.github.spair:imgui-java-app:1.81.0"
 }
