@@ -1,6 +1,7 @@
 # Kyuubi-Engine
-
-Find out more at our [Website!](https://kyuubi-engine.com)
+## How to navigate
+Kyuubiforge is the backend engine.
+Kyuubieditor is the editor which uses the engine to create games.
 
 ## About
 Kyuubi is a simple 2D Engine (with editor) built in Java 17.
