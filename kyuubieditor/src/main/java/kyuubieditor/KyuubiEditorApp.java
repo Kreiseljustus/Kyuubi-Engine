@@ -3,6 +3,7 @@ package kyuubieditor;
 import kyuubiforge.Core.Application.Application;
 import kyuubiforge.Core.Application.ApplicationSpecification;
 import kyuubiforge.Core.Window.WindowSpecification;
+import kyuubiforge.Debug.Testlayer;
 
 import static kyuubiforge.Debug.Debug.log;
 
@@ -15,13 +16,8 @@ public class KyuubiEditorApp
         ApplicationSpecification specs = new ApplicationSpecification("KyuubiEditor", windowSpecification);
         KyuubiEditor editor = new KyuubiEditor(specs);
 
-        EditorSettings settings = new EditorSettings();
-        settings.window = editor.getWindow().getWindowId();
+        editor.getWindow().attachImGuiLayer(Testlayer.class);
 
-        PreProcess process = new PreProcess();
-        process.init(settings);
-        process.run();
-
-        //editor.run();
+        editor.run();
     }
 }

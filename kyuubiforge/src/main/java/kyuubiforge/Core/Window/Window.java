@@ -1,15 +1,19 @@
 package kyuubiforge.Core.Window;
 
+import imgui.ImGui;
 import kyuubiforge.Core.Application.Application;
+import kyuubiforge.Core.ImGuiLayer;
 import kyuubiforge.Core.Time;
 import static kyuubiforge.Debug.Debug.log;
 
 import kyuubiforge.Debug.Debug;
+import kyuubiforge.Debug.Testlayer;
 import kyuubiforge.Input.KeyListener;
 import kyuubiforge.Core.Window.Container.Container;
 import org.lwjgl.glfw.GLFWErrorCallback;
 import org.lwjgl.opengl.GL;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -30,6 +34,7 @@ public class Window
 
     private static int windowNumber = 0;
 
+    private ImGuiLayer imGuiLayer = null;
 
     //List that contains the current state of the window or a combination of those
     public List<WindowState> state = new LinkedList<>();
@@ -39,7 +44,20 @@ public class Window
     public Window(WindowSpecification specification)
     {
         this.windowSpecification = specification;
+
+        this.imGuiLayer = specification.imGuiLayer;
+
         initWindow();
+    }
+
+    public int getWidth()
+    {
+        return windowSpecification.width;
+    }
+
+    public int getHeight()
+    {
+        return windowSpecification.height;
     }
 
     public Window initWindow()
@@ -96,6 +114,11 @@ public class Window
         //TODO: Needs proper handling with multi threading
         GL.createCapabilities();
 
+        if(imGuiLayer != null)
+        {
+            imGuiLayer.initImGui();
+        }
+
         return this;
     }
 
@@ -117,11 +140,7 @@ public class Window
         return this;
     }
 
-    float beginTime = Time.getTime();
-    float endTime;
-    float dt = -1.0f;
-
-    public void Update()
+    public void Update(float dt)
     {
         //Can be called from any thread!
         //Process all events that are still in the queue
@@ -137,19 +156,16 @@ public class Window
         glClearColor(1.0f,1.0f,1.0f,1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
 
-        if (dt >= 0) {
+
                 //Update?
             for (Container e : containers)
             {
                 e.update(dt);
             }
-        }
+            if(imGuiLayer != null) imGuiLayer.update(dt);
 
             //Switches the buffers to display the next frame
         glfwSwapBuffers(windowSpecification.windowID);
-        endTime = Time.getTime();
-        dt = endTime - beginTime;
-        beginTime = endTime;
     }
 
     public void resize(int x, int y)
@@ -157,6 +173,22 @@ public class Window
 
     }
 
+    public <T extends ImGuiLayer> void attachImGuiLayer(Class<T> imGuiLayer)
+    {
+        try {
+            this.imGuiLayer = imGuiLayer.getDeclaredConstructor(Window.class).newInstance(this);
+        } catch (InstantiationException e) {
+            throw new RuntimeException(e);
+        } catch (IllegalAccessException e) {
+            throw new RuntimeException(e);
+        } catch (InvocationTargetException e) {
+            throw new RuntimeException(e);
+        } catch (NoSuchMethodException e) {
+            throw new RuntimeException(e);
+        }
+
+        this.imGuiLayer.initImGui();
+    }
 
     public void onClose()
     {
@@ -166,15 +198,26 @@ public class Window
         if(windowNumber <= 0) {
             Application.get().onClose();
 
+            if(imGuiLayer != null)
+            {
+                imGuiLayer.destroyImGui();
+            }
+
             glfwFreeCallbacks(windowSpecification.windowID);
             glfwDestroyWindow(windowSpecification.windowID);
 
             System.gc();
             log("[KyuubiForge] Destroyed window [" + windowSpecification.windowID + "]");
+            Application.get().onClose();
             glfwTerminate();
         }
         else
         {
+            if(imGuiLayer != null)
+            {
+                imGuiLayer.destroyImGui();
+            }
+
             glfwFreeCallbacks(windowSpecification.windowID);
             glfwDestroyWindow(windowSpecification.windowID);
 

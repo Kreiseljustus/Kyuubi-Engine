@@ -1,4 +1,4 @@
-package justuswalterhelk.kyuubiforge
+package kyuubiforge
 
 plugins
 {
@@ -19,6 +19,7 @@ project.ext.lwjglVersion = "3.3.1"
 project.ext.jomlVersion = "1.10.5"
 project.ext.lwjglNatives = "natives-windows"
 dependencies {
+    implementation "io.github.spair:imgui-java-app:1.81.0"
     implementation platform("org.lwjgl:lwjgl-bom:$lwjglVersion")
     implementation "org.lwjgl:lwjgl"
     implementation "org.lwjgl:lwjgl-assimp"

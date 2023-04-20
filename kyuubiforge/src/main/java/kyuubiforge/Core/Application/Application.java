@@ -3,6 +3,7 @@ package kyuubiforge.Core.Application;
 import kyuubiforge.Core.Window.Window;
 import kyuubiforge.Core.Window.Container.TestContainer;
 import static kyuubiforge.Debug.Debug.log;
+import static org.lwjgl.glfw.GLFW.*;
 
 /*
     This class needs to get reworked at some point
@@ -42,14 +43,29 @@ public class Application
         //Shutdown Renderer
     }
 
+    public float beginTime;
+    public float endTime;
+    public float dt = -1f;
+
     public void run()
     {
         window.addContainer(new TestContainer()).initContainers();
         log("[KyuubiEditor] Initialized main window");
 
+        beginTime = (float)glfwGetTime();
+        dt = -1.0f;
+
         while(running)
         {
-            window.Update();
+            if(dt >= 0)
+            {
+                window.Update(dt);
+            }
+            if(running) {
+                endTime = (float) glfwGetTime();
+                dt = endTime - beginTime;
+                beginTime = endTime;
+            }
         }
     }
 

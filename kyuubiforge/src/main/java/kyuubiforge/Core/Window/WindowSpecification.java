@@ -1,5 +1,7 @@
 package kyuubiforge.Core.Window;
 
+import kyuubiforge.Core.ImGuiLayer;
+
 /**
  * Contains vital settings for the window creation.
  * <b>Also used to retrieve current resolution and title</b>
@@ -31,6 +33,16 @@ public class WindowSpecification
         this.isResizeable = isResizeable;
     }
 
+    public WindowSpecification(int width, int height, String title, boolean isFullScreen, boolean isResizeable, ImGuiLayer imGuiLayer)
+    {
+        this.width = width;
+        this.height = height;
+        this.title = title;
+        this.isFullScreen = isFullScreen;
+        this.isResizeable = isResizeable;
+        this.imGuiLayer = imGuiLayer;
+    }
+
     public int width;
     public int height;
     public String title;
@@ -39,4 +51,6 @@ public class WindowSpecification
     public boolean isResizeable = true;
 
     public long windowID;
+
+    public ImGuiLayer imGuiLayer = null;
 }
