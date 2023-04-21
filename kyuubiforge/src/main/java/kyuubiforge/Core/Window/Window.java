@@ -1,14 +1,10 @@
 package kyuubiforge.Core.Window;
 
-import imgui.ImGui;
 import kyuubiforge.Core.Application.Application;
 import kyuubiforge.Core.ImGuiLayer;
-import kyuubiforge.Core.Time;
+
 import static kyuubiforge.Debug.Debug.log;
 
-import kyuubiforge.Debug.Debug;
-import kyuubiforge.Debug.Testlayer;
-import kyuubiforge.Input.KeyListener;
 import kyuubiforge.Core.Window.Container.Container;
 import org.lwjgl.glfw.GLFWErrorCallback;
 import org.lwjgl.opengl.GL;
@@ -76,6 +72,7 @@ public class Window
         glfwDefaultWindowHints();
         //Set the window properties
         glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE);
+        glfwWindowHint(GLFW_DECORATED, GLFW_FALSE);
         if(windowSpecification.isResizeable)
         {
             glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE);

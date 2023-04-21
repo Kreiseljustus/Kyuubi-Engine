@@ -1,11 +1,7 @@
 package kyuubieditor;
 
-import kyuubiforge.Core.Application.Application;
 import kyuubiforge.Core.Application.ApplicationSpecification;
 import kyuubiforge.Core.Window.WindowSpecification;
-import kyuubiforge.Debug.Testlayer;
-
-import static kyuubiforge.Debug.Debug.log;
 
 public class KyuubiEditorApp
 {

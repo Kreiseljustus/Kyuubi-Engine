@@ -50,6 +50,8 @@ public class WindowSpecification
     public boolean isFullScreen = true;
     public boolean isResizeable = true;
 
+    public boolean isDecorated = false;
+
     public long windowID;
 
     public ImGuiLayer imGuiLayer = null;

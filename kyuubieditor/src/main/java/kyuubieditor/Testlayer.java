@@ -1,6 +1,7 @@
-package kyuubiforge.Debug;
+package kyuubieditor;
 
 import imgui.ImGui;
+import imgui.flag.ImGuiCond;
 import imgui.flag.ImGuiWindowFlags;
 import kyuubiforge.Core.ImGuiLayer;
 import kyuubiforge.Core.Window.Window;
@@ -14,12 +15,17 @@ public class Testlayer extends ImGuiLayer {
 
     @Override
     public void render() {
+        ImGui.showDemoWindow();
+        ImGui.setNextWindowPos(0,0, ImGuiCond.FirstUseEver);
+        ImGui.setNextWindowSize(300,1920, ImGuiCond.FirstUseEver);
         if(ImGui.begin("Inspector"))
         {
             ImGui.text("Test");
-            if(ImGui.button("Lol"))
+            for(int i = 0; i < 50; i++)
             {
-                log("Button pressed");
+                if(ImGui.button("Button " + i)){
+
+                }
             }
         }
 
