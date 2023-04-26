@@ -1,8 +1,7 @@
-package kyuubiforge.Core.Window.Container;
+package kyuubiforge.Debug;
 
-import kyuubiforge.Core.Window.Container.Container;
-import static kyuubiforge.Debug.Debug.log;
-
+import kyuubiforge.Core.Component;
+import kyuubiforge.Core.GameObject;
 import kyuubiforge.Graphics.Texture2D;
 import kyuubiforge.Graphics.TextureSettings;
 import kyuubiforge.Input.Key;
@@ -15,17 +14,16 @@ import org.lwjgl.BufferUtils;
 import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
 
+import static kyuubiforge.Debug.Debug.log;
+import static org.lwjgl.opengl.GL11.GL_FLOAT;
+import static org.lwjgl.opengl.GL15.*;
+import static org.lwjgl.opengl.GL15.GL_STATIC_DRAW;
 import static org.lwjgl.opengl.GL20.*;
+import static org.lwjgl.opengl.GL20.glDisableVertexAttribArray;
 import static org.lwjgl.opengl.GL30.glBindVertexArray;
 import static org.lwjgl.opengl.GL30.glGenVertexArrays;
 
-
-/*
-    This class needs to get reworked at some point.
-    This class will not be included in the production release of the engine,
-    it´s currently used for testing purposes only!
- */
-public class TestContainer extends Container {
+public class TestRenderer extends Component {
 
     private Shader shader = null;
     private Texture2D texture2D;
@@ -44,24 +42,17 @@ public class TestContainer extends Container {
 
     //COUNTER CLOCKWISE!
     private int[] elementArray =
-    {
-            2,1,0,
-            0,1,3
-    };
-
-    public TestContainer()
-    {
-        this.containerName = "TestContainer";
-        this.containerDescription = "Container for testing basic rendering and texture bashing";
-    }
+            {
+                    2,1,0,
+                    0,1,3
+            };
 
     private  int vaoID, vboID, eboID;
 
     @Override
-    public void init()
-    {
+    public void Start() {
         this.camera = new EditorCamera(new Vector3f(-600.0f,-300.0f, 0.1f));
-        log("Initializing " + containerName);
+        log("Initializing TestRenderer");
 
         shader = new Shader("assets/shaders/default.glsl");
 
@@ -101,11 +92,15 @@ public class TestContainer extends Container {
         glEnableVertexAttribArray(2);
     }
 
-     float cameraSpeed = 2f;
+    float cameraSpeed = 2f;
 
     @Override
-    public void update(float deltaTime) {
+    public void Awake() {
 
+    }
+
+    @Override
+    public void Update(float deltaTime) {
         //System.out.println("[KyuubiForge] Container updated with " + deltaTime);
         if(KeyListener.isKeyPressed(Key.R.getValue()))
         {
@@ -155,4 +150,5 @@ public class TestContainer extends Container {
         glBindVertexArray(0);
         shader.detach();
     }
+
 }

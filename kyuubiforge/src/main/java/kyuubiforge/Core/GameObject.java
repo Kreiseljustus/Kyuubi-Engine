@@ -2,13 +2,14 @@ package kyuubiforge.Core;
 
 import kyuubiforge.Debug.Debug;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class GameObject
 {
     private String name;
-    private List<Component> components;
+    private List<Component> components = new ArrayList<>();
 
     public GameObject(String name)
     {
@@ -54,11 +55,24 @@ public class GameObject
         c.gameObject = this;
     }
 
+    public void drawInspector()
+    {
+
+    }
+
     public void start()
     {
         for (int i = 0; i < components.size(); i++)
         {
             components.get(i).Start();
+        }
+    }
+
+    public void update(float deltaTime)
+    {
+        for(Component c : this.components)
+        {
+            c.Update(deltaTime);
         }
     }
 }

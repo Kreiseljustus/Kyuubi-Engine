@@ -1,7 +1,6 @@
 package kyuubiforge.Core.Application;
 
 import kyuubiforge.Core.Window.Window;
-import kyuubiforge.Core.Window.Container.TestContainer;
 import static kyuubiforge.Debug.Debug.log;
 import static org.lwjgl.glfw.GLFW.*;
 
@@ -49,7 +48,6 @@ public class Application
 
     public void run()
     {
-        window.addContainer(new TestContainer()).initContainers();
         log("[KyuubiEditor] Initialized main window");
 
         beginTime = (float)glfwGetTime();

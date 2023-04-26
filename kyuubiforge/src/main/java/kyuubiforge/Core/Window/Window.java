@@ -5,7 +5,9 @@ import kyuubiforge.Core.ImGuiLayer;
 
 import static kyuubiforge.Debug.Debug.log;
 
-import kyuubiforge.Core.Window.Container.Container;
+import kyuubiforge.Core.Scene;
+import kyuubiforge.Core.SceneManager;
+import kyuubiforge.Debug.TestScene;
 import org.lwjgl.glfw.GLFWErrorCallback;
 import org.lwjgl.opengl.GL;
 
@@ -26,7 +28,7 @@ import static org.lwjgl.opengl.GL11.*;
  */
 public class Window
 {
-    private List<Container> containers = new LinkedList<Container>();
+    public SceneManager sceneManager = new SceneManager();
 
     private static int windowNumber = 0;
 
@@ -116,23 +118,7 @@ public class Window
             imGuiLayer.initImGui();
         }
 
-        return this;
-    }
-
-    public Window addContainer(Container container)
-    {
-        containers.add(container);
-        log("Added " + container.containerName + " as a container to " + windowSpecification.windowID);
-
-        return this;
-    }
-
-    public Window initContainers()
-    {
-        for(Container e : containers)
-        {
-            e.init();
-        }
+        sceneManager.loadScene(TestScene.class);
 
         return this;
     }
@@ -153,13 +139,11 @@ public class Window
         glClearColor(1.0f,1.0f,1.0f,1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
 
-
-                //Update?
-            for (Container e : containers)
-            {
-                e.update(dt);
-            }
-            if(imGuiLayer != null) imGuiLayer.update(dt);
+        for(Scene scene : sceneManager.getLoadedScenes())
+        {
+            scene.update(dt);
+        }
+        if(imGuiLayer != null) imGuiLayer.update(dt);
 
             //Switches the buffers to display the next frame
         glfwSwapBuffers(windowSpecification.windowID);
