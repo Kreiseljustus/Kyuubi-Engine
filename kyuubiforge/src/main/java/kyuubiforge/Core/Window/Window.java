@@ -1,11 +1,11 @@
 package kyuubiforge.Core.Window;
 
 import kyuubiforge.Core.Application.Application;
-import kyuubiforge.Core.ImGuiLayer;
+import kyuubiforge.Core.IImGuiLayer;
 
 import static kyuubiforge.Debug.Debug.log;
 
-import kyuubiforge.Core.Scene;
+import kyuubiforge.Core.IScene;
 import kyuubiforge.Core.SceneManager;
 import kyuubiforge.Debug.TestScene;
 import org.lwjgl.glfw.GLFWErrorCallback;
@@ -32,7 +32,7 @@ public class Window
 
     private static int windowNumber = 0;
 
-    private ImGuiLayer imGuiLayer = null;
+    private IImGuiLayer imGuiLayer = null;
 
     //List that contains the current state of the window or a combination of those
     public List<WindowState> state = new LinkedList<>();
@@ -139,7 +139,7 @@ public class Window
         glClearColor(1.0f,1.0f,1.0f,1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
 
-        for(Scene scene : sceneManager.getLoadedScenes())
+        for(IScene scene : sceneManager.getLoadedScenes())
         {
             scene.update(dt);
         }
@@ -154,7 +154,7 @@ public class Window
 
     }
 
-    public <T extends ImGuiLayer> void attachImGuiLayer(Class<T> imGuiLayer)
+    public <T extends IImGuiLayer> void attachImGuiLayer(Class<T> imGuiLayer)
     {
         try {
             this.imGuiLayer = imGuiLayer.getDeclaredConstructor(Window.class).newInstance(this);

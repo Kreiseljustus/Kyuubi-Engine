@@ -9,16 +9,16 @@ import java.util.List;
 public class GameObject
 {
     private String name;
-    private List<Component> components = new ArrayList<>();
+    private List<IComponent> components = new ArrayList<>();
 
     public GameObject(String name)
     {
         this.name = name;
     }
 
-    public <T extends Component> T getComponent(Class<T> componentClass)
+    public <T extends IComponent> T getComponent(Class<T> componentClass)
     {
-        for(Component c : components)
+        for(IComponent c : components)
         {
             if(componentClass.isAssignableFrom(c.getClass()))
             {
@@ -36,11 +36,11 @@ public class GameObject
         return null;
     }
 
-    public <T extends Component> void removeComponent(Class<T> componentClass)
+    public <T extends IComponent> void removeComponent(Class<T> componentClass)
     {
         for(int i = 0; i < components.size(); i++)
         {
-            Component c = components.get(i);
+            IComponent c = components.get(i);
             if(componentClass.isAssignableFrom(c.getClass()))
             {
                 components.remove(i);
@@ -49,7 +49,7 @@ public class GameObject
         }
     }
 
-    public void addComponent(Component c)
+    public void addComponent(IComponent c)
     {
         this.components.add(c);
         c.gameObject = this;
@@ -70,7 +70,7 @@ public class GameObject
 
     public void update(float deltaTime)
     {
-        for(Component c : this.components)
+        for(IComponent c : this.components)
         {
             c.Update(deltaTime);
         }

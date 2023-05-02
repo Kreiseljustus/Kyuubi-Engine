@@ -1,7 +1,7 @@
 package kyuubiforge.Debug;
 
-import kyuubiforge.Core.Component;
 import kyuubiforge.Core.GameObject;
+import kyuubiforge.Core.IComponent;
 import kyuubiforge.Graphics.Texture2D;
 import kyuubiforge.Graphics.TextureSettings;
 import kyuubiforge.Input.Key;
@@ -23,7 +23,7 @@ import static org.lwjgl.opengl.GL20.glDisableVertexAttribArray;
 import static org.lwjgl.opengl.GL30.glBindVertexArray;
 import static org.lwjgl.opengl.GL30.glGenVertexArrays;
 
-public class TestRenderer extends Component {
+public class TestRenderer extends IComponent {
 
     private Shader shader = null;
     private Texture2D texture2D;

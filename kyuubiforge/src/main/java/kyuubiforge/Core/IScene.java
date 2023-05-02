@@ -3,14 +3,14 @@ package kyuubiforge.Core;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Scene {
+public abstract class IScene {
     private boolean isRunning = false;
     protected List<GameObject> gameObjects = new ArrayList<>();
 
     protected List<GameObject> selectedGameObjects = new ArrayList<>();
     protected GameObject activeGameObject = null;
 
-    public Scene()
+    public IScene()
     {
 
     }

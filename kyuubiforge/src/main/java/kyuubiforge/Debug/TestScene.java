@@ -1,11 +1,11 @@
 package kyuubiforge.Debug;
 
 import kyuubiforge.Core.GameObject;
-import kyuubiforge.Core.Scene;
+import kyuubiforge.Core.IScene;
 
 import static kyuubiforge.Debug.Debug.log;
 
-public class TestScene extends Scene {
+public class TestScene extends IScene {
     @Override
     public void update(float dt) {
         for(GameObject g : this.gameObjects)

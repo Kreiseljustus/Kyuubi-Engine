@@ -6,7 +6,6 @@ import imgui.callback.ImStrConsumer;
 import imgui.callback.ImStrSupplier;
 import imgui.flag.ImGuiBackendFlags;
 import imgui.flag.ImGuiConfigFlags;
-import imgui.flag.ImGuiKey;
 import imgui.flag.ImGuiMouseCursor;
 import imgui.gl3.ImGuiImplGl3;
 import imgui.glfw.ImGuiImplGlfw;
@@ -14,7 +13,7 @@ import kyuubiforge.Core.Window.Window;
 
 import static org.lwjgl.glfw.GLFW.*;
 
-public abstract class ImGuiLayer {
+public abstract class IImGuiLayer {
 
     private Window window;
     private long glfwWindow;
@@ -29,7 +28,7 @@ public abstract class ImGuiLayer {
 
     private final ImGuiImplGlfw glfw = new ImGuiImplGlfw();
 
-    public ImGuiLayer(Window glfwWindow) {
+    public IImGuiLayer(Window glfwWindow) {
         this.window = glfwWindow;
         this.glfwWindow = window.getWindowId();
     }
