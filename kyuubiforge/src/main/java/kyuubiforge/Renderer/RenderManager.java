@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RenderManager {
-    protected List<IRenderLayer> renderLayers = new ArrayList<IRenderLayer>();
+    protected List<AbstractRenderLayer> renderLayers = new ArrayList<AbstractRenderLayer>();
 
-    public <T extends IRenderLayer> void addRenderer(T renderer)
+    public <T extends AbstractRenderLayer> void addRenderer(T renderer)
     {
         renderer.init();
 
@@ -14,7 +14,7 @@ public class RenderManager {
 
     }
 
-    public IRenderLayer getRenderer(int index)
+    public AbstractRenderLayer getRenderer(int index)
     {
         return renderLayers.get(index);
     }
