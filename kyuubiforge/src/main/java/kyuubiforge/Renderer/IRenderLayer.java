@@ -1,10 +1,6 @@
 package kyuubiforge.Renderer;
 
-public abstract class IRenderLayer {
-    public void Renderer()
-    {
-
-    }
+public abstract class AbstractRenderLayer {
 
     public void init()
     {
