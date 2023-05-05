@@ -4,8 +4,10 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 
+import static kyuubiforge.Debug.Debug.log;
+
 public class SceneManager {
-    private List<AbstractScene> loadedScenes = new ArrayList<AbstractScene>();
+    private static List<AbstractScene> loadedScenes = new ArrayList<AbstractScene>();
 
     public <T extends AbstractScene> T loadScene(Class<T> scene)
     {
@@ -13,6 +15,7 @@ public class SceneManager {
 
         try {
             sceneToLoad = scene.getDeclaredConstructor().newInstance();
+            log("[KyuubiForge] Trying to load " + sceneToLoad.toString());
         } catch (InstantiationException e) {
             throw new RuntimeException(e);
         } catch (IllegalAccessException e) {
@@ -30,7 +33,7 @@ public class SceneManager {
         return null;
     }
 
-    public List<AbstractScene> getLoadedScenes()
+    public static List<AbstractScene> getLoadedScenes()
     {
         return loadedScenes;
     }

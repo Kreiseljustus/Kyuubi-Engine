@@ -8,6 +8,8 @@ import static kyuubiforge.Debug.Debug.log;
 import kyuubiforge.Core.AbstractScene;
 import kyuubiforge.Core.SceneManager;
 import kyuubiforge.Debug.TestScene;
+import kyuubiforge.Renderer.GameRenderer;
+import kyuubiforge.Renderer.RenderManager;
 import org.lwjgl.glfw.GLFWErrorCallback;
 import org.lwjgl.opengl.GL;
 
@@ -28,7 +30,8 @@ import static org.lwjgl.opengl.GL11.*;
  */
 public class Window
 {
-    public SceneManager sceneManager = new SceneManager();
+    public SceneManager sceneManager = null;
+    private RenderManager renderManager = null;
 
     private static int windowNumber = 0;
 
@@ -118,7 +121,12 @@ public class Window
             imGuiLayer.initImGui();
         }
 
+        renderManager = new RenderManager();
+        sceneManager = new SceneManager();
+
         sceneManager.loadScene(TestScene.class);
+
+        renderManager.addRenderer(new GameRenderer());
 
         return this;
     }

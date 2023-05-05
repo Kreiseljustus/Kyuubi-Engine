@@ -5,9 +5,9 @@ import java.util.List;
 
 public abstract class AbstractScene {
     private boolean isRunning = false;
-    protected List<GameObject> gameObjects = new ArrayList<>();
+    protected ArrayList<GameObject> gameObjects = new ArrayList<>();
 
-    protected List<GameObject> selectedGameObjects = new ArrayList<>();
+    protected ArrayList<GameObject> selectedGameObjects = new ArrayList<>();
     protected GameObject activeGameObject = null;
 
     public AbstractScene()
@@ -52,6 +52,11 @@ public abstract class AbstractScene {
         }
 
         customSceneImgui();
+    }
+
+    public ArrayList<GameObject> getGameObjects()
+    {
+        return gameObjects;
     }
 
     /**
