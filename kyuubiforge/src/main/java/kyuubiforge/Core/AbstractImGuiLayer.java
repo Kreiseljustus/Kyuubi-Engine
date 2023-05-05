@@ -13,7 +13,7 @@ import kyuubiforge.Core.Window.Window;
 
 import static org.lwjgl.glfw.GLFW.*;
 
-public abstract class IImGuiLayer {
+public abstract class AbstractImGuiLayer {
 
     private Window window;
     private long glfwWindow;
@@ -28,7 +28,7 @@ public abstract class IImGuiLayer {
 
     private final ImGuiImplGlfw glfw = new ImGuiImplGlfw();
 
-    public IImGuiLayer(Window glfwWindow) {
+    public AbstractImGuiLayer(Window glfwWindow) {
         this.window = glfwWindow;
         this.glfwWindow = window.getWindowId();
     }

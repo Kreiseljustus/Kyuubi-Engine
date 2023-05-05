@@ -27,10 +27,6 @@ public class Application
         applicationSpecification = specification;
 
         window = new Window(specification.mainWindowSpecification);
-
-        //Initalize Renderer
-
-        //Create ImGui Layer
     }
 
     public static Application get() { return instance;}

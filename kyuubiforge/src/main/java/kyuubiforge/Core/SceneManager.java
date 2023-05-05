@@ -5,11 +5,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SceneManager {
-    private List<IScene> loadedScenes = new ArrayList<IScene>();
+    private List<AbstractScene> loadedScenes = new ArrayList<AbstractScene>();
 
-    public <T extends IScene> T loadScene(Class<T> scene)
+    public <T extends AbstractScene> T loadScene(Class<T> scene)
     {
-        IScene sceneToLoad = null;
+        AbstractScene sceneToLoad = null;
 
         try {
             sceneToLoad = scene.getDeclaredConstructor().newInstance();
@@ -30,7 +30,7 @@ public class SceneManager {
         return null;
     }
 
-    public List<IScene> getLoadedScenes()
+    public List<AbstractScene> getLoadedScenes()
     {
         return loadedScenes;
     }

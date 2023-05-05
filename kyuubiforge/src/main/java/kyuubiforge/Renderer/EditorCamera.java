@@ -3,7 +3,7 @@ package kyuubiforge.Renderer;
 import org.joml.Matrix4f;
 import org.joml.Vector3f;
 
-public class EditorCamera extends Camera
+public class EditorCamera extends AbstractCamera
 {
     public Vector3f position;
 

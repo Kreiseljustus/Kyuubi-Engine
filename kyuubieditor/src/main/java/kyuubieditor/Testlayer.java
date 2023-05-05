@@ -2,10 +2,10 @@ package kyuubieditor;
 
 import imgui.ImGui;
 import imgui.flag.ImGuiCond;
-import kyuubiforge.Core.IImGuiLayer;
+import kyuubiforge.Core.AbstractImGuiLayer;
 import kyuubiforge.Core.Window.Window;
 
-public class Testlayer extends IImGuiLayer {
+public class Testlayer extends AbstractImGuiLayer {
     public Testlayer(Window glfwWindow) {
         super(glfwWindow);
     }
