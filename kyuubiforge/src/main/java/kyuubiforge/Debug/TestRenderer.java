@@ -29,8 +29,9 @@ public class TestRenderer extends AbstractComponent {
 
     private EditorCamera camera;
 
+
     //Normalized Device Coordinates!
-    private float[] vertexArray =
+    public float[] vertexArray =
             {
                     // position               // color                  // UV Coordinates
                     100f,   0f, 0.0f,       1.0f, 0.0f, 0.0f, 1.0f,     1, 1, // Bottom right 0

@@ -23,14 +23,6 @@ public class GameRenderer extends AbstractRenderLayer {
         /*
         All setup for the renderer should happen BEFORE this line!
          */
-        log("[KyuubiForge] Trying to start gameObjects");
-        for (AbstractScene scene : loadedScenes)
-        {
-            for (GameObject g : scene.getGameObjects())
-            {
-                g.start();
-            }
-        }
     }
 
     @Override
