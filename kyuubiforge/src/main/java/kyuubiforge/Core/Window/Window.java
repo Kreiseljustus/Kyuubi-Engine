@@ -77,7 +77,7 @@ public class Window
         glfwDefaultWindowHints();
         //Set the window properties
         glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE);
-        glfwWindowHint(GLFW_DECORATED, GLFW_FALSE);
+        glfwWindowHint(GLFW_DECORATED, windowSpecification.isDecorated ? GLFW_TRUE : GLFW_FALSE);
         if(windowSpecification.isResizeable)
         {
             glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE);

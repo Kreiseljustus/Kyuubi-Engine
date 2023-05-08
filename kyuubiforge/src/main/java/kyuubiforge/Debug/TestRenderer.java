@@ -27,7 +27,7 @@ public class TestRenderer extends AbstractComponent {
     private Shader shader = null;
     private Texture2D texture2D;
 
-    private EditorCamera camera;
+    private static EditorCamera camera;
 
 
     //Normalized Device Coordinates!
@@ -51,7 +51,7 @@ public class TestRenderer extends AbstractComponent {
 
     @Override
     public void Start() {
-        this.camera = new EditorCamera(new Vector3f(-600.0f,-300.0f, 0.1f));
+        if(camera == null) camera = new EditorCamera(new Vector3f(-600.0f,-300.0f, 0.1f));
         log("Initializing TestRenderer");
 
         shader = new Shader("assets/shaders/default.glsl");
