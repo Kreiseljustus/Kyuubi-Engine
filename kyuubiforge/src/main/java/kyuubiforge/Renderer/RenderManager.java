@@ -20,6 +20,9 @@ public class RenderManager implements ILifeCycle {
     {
         return renderLayers.get(index);
     }
+    public List<AbstractRenderLayer> getRenderLayers() {
+        return this.renderLayers;
+    }
 
     @Override
     public void init() {

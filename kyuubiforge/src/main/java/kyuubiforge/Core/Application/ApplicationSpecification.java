@@ -12,7 +12,7 @@ public class ApplicationSpecification
 
     private String name = "KyuubiForge (Development Version)";
     private String workingDirectory = System.getProperty("user.dir");
-    private ApplicationCommandLineArgs commandLineArgs;
+    private ApplicationCommandLineArgs commandLineArgs = null;
 
     public WindowSpecification mainWindowSpecification = null;
 
@@ -33,5 +33,5 @@ public class ApplicationSpecification
 
     public void setName(String name) {name = name;}
     public void setWorkingDirectory(String workingDirectory) {workingDirectory = workingDirectory;}
-    public void setCommandLineArgs(ApplicationCommandLineArgs commandLineArgs) {commandLineArgs = commandLineArgs;}
+    public void setCommandLineArgs(ApplicationCommandLineArgs commandLineArgs) {this.commandLineArgs = commandLineArgs;}
 }

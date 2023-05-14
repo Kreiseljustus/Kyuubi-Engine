@@ -1,26 +1,24 @@
 package kyuubiforge.Core.Application;
 
 import kyuubiforge.Core.Window.Window;
-import static kyuubiforge.Debug.Debug.log;
-import static org.lwjgl.glfw.GLFW.*;
+import org.jetbrains.annotations.NotNull;
 
 /*
     This class needs to get reworked at some point
  */
-public class Application
-{
-    private Window window = null;
+public class Application {
+    private Window window;
 
     private final ApplicationSpecification applicationSpecification;
     public ApplicationSpecification getSpecification() {return applicationSpecification;}
 
-    private static Application instance = null;
+    private static Application instance;
 
     public Window getWindow() { return window;}
 
-    private boolean running = true;
+    private final ApplicationHandler applicationHandler = new ApplicationHandler(this);
 
-    public Application(ApplicationSpecification specification)
+    public Application(@NotNull ApplicationSpecification specification)
     {
         instance = this;
 
@@ -29,39 +27,6 @@ public class Application
         window = new Window(specification.mainWindowSpecification);
     }
 
-    public static Application get() { return instance;}
-
-    public void onClose()
-    {
-        log("[KyuubiEditor] Shutting down update loop");
-        running = false;
-        //Shutdown Renderer
-    }
-
-    public float beginTime;
-    public float endTime;
-    public float dt = -1f;
-
-    public void run()
-    {
-        log("[KyuubiEditor] Initialized main window");
-
-        beginTime = (float)glfwGetTime();
-        dt = -1.0f;
-
-        while(running)
-        {
-            if(dt >= 0)
-            {
-                window.Update(dt);
-            }
-            if(running) {
-                endTime = (float) glfwGetTime();
-                dt = endTime - beginTime;
-                beginTime = endTime;
-            }
-        }
-    }
-
-
+    public static Application get() {return instance;}
+    public ApplicationHandler getApplicationHandler() {return applicationHandler;}
 }
