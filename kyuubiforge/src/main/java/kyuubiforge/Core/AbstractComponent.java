@@ -1,6 +1,6 @@
 package kyuubiforge.Core;
 
-public abstract class Component
+public abstract class AbstractComponent
 {
     public GameObject gameObject;
 

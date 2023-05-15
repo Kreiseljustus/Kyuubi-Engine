@@ -1,19 +1,19 @@
 package kyuubiforge.Core.Window;
 
 import kyuubiforge.Core.Application.Application;
-import kyuubiforge.Core.ImGuiLayer;
+import kyuubiforge.Core.AbstractImGuiLayer;
 
 import static kyuubiforge.Debug.Debug.log;
 
-import kyuubiforge.Core.Window.Container.Container;
-import org.lwjgl.glfw.GLFWErrorCallback;
-import org.lwjgl.opengl.GL;
+import kyuubiforge.Core.AbstractScene;
+import kyuubiforge.Renderer.RenderManager;
+import org.jetbrains.annotations.NotNull;
 
+import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.LinkedList;
 import java.util.List;
 
-import static java.sql.Types.NULL;
 import static org.lwjgl.glfw.Callbacks.glfwFreeCallbacks;
 import static org.lwjgl.glfw.GLFW.*;
 import static org.lwjgl.opengl.GL11.*;
@@ -24,207 +24,37 @@ import static org.lwjgl.opengl.GL11.*;
 
     Figure out FPS cap per window
  */
-public class Window
-{
-    private List<Container> containers = new LinkedList<Container>();
+public class Window {
 
-    private static int windowNumber = 0;
+    protected static int windowNumber;
+    protected GeneralWindowHandler windowHandler;
 
-    private ImGuiLayer imGuiLayer = null;
-
-    //List that contains the current state of the window or a combination of those
-    public List<WindowState> state = new LinkedList<>();
-
-    private WindowSpecification windowSpecification = null;
-
-    public Window(WindowSpecification specification)
-    {
-        this.windowSpecification = specification;
-
-        this.imGuiLayer = specification.imGuiLayer;
-
-        initWindow();
+    public Window(@NotNull final WindowSpecification specification) {
+        this.windowHandler = new GeneralWindowHandler(this, specification);
+        init();
     }
 
-    public int getWidth()
-    {
-        return windowSpecification.width;
+    public void update(float dt) {
+        windowHandler.update(dt);
+    }
+    private void init() {
+        windowHandler.init();
     }
 
-    public int getHeight()
-    {
-        return windowSpecification.height;
+    public <T extends AbstractImGuiLayer> void attachImGuiLayer(@NotNull Class<T> imGuiLayer) {
+        windowHandler.attachImGuiLayer(imGuiLayer);
     }
 
-    public Window initWindow()
-    {
-        //Print errors to console
-        GLFWErrorCallback.createPrint(System.err).set();
-
-        //Initialize GLFW
-        if(!glfwInit())
-        {
-            assert false : "[KyuubiForge] Failed to initialize GLFW! Restart required.";
-            throw new IllegalStateException("Initializing GLFW failed!");
-        }
-
-        //Reset all hints to their default values
-        glfwDefaultWindowHints();
-        //Set the window properties
-        glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE);
-        glfwWindowHint(GLFW_DECORATED, GLFW_FALSE);
-        if(windowSpecification.isResizeable)
-        {
-            glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE);
-            state.add(WindowState.RESIZEABLE);
-        }
-        if(windowSpecification.isFullScreen)
-        {
-            state.add(WindowState.MAXIMIZED);
-            glfwWindowHint(GLFW_MAXIMIZED, GLFW_TRUE);
-        }
-
-        //TODO: Add monitor and share to constructor
-        //Create the window and save its id in a long
-        windowSpecification.windowID = glfwCreateWindow(windowSpecification.width,windowSpecification.height,windowSpecification.title, NULL,NULL);
-        windowNumber += 1;
-        if(windowSpecification.windowID == NULL)
-        {
-            assert false : "[KyuubiForge] Failed to create window!";
-            throw new IllegalStateException("Failed to create window");
-        }
-
-        //glfwSetKeyCallback(windowSpecification.windowID, KeyListener::keyCallback);
-
-        //WARNING: Needs proper handling when dealing with multiple windows on the same Thread!
-        glfwMakeContextCurrent(windowSpecification.windowID);
-
-        //V-Sync
-        glfwSwapInterval(1);
-
-        //Show the window
-        glfwShowWindow(windowSpecification.windowID);
-        state.add(WindowState.OPEN);
-
-        //IMPORTANT
-        //Create all the needed opengl objects
-        //TODO: Needs proper handling with multi threading
-        GL.createCapabilities();
-
-        if(imGuiLayer != null)
-        {
-            imGuiLayer.initImGui();
-        }
-
-        return this;
+    public int getWidth() {
+        return windowHandler.windowSpecification.width;
     }
-
-    public Window addContainer(Container container)
-    {
-        containers.add(container);
-        log("Added " + container.containerName + " as a container to " + windowSpecification.windowID);
-
-        return this;
+    public int getHeight() {
+        return windowHandler.windowSpecification.height;
     }
-
-    public Window initContainers()
-    {
-        for(Container e : containers)
-        {
-            e.init();
-        }
-
-        return this;
+    public long getWindowId() {
+        return windowHandler.windowSpecification.windowID;
     }
-
-    public void Update(float dt)
-    {
-        //Can be called from any thread!
-        //Process all events that are still in the queue
-        glfwPollEvents();
-
-        if(glfwWindowShouldClose(windowSpecification.windowID))
-        {
-            this.onClose();
-            return;
-        }
-
-            //Clear color
-        glClearColor(1.0f,1.0f,1.0f,1.0f);
-        glClear(GL_COLOR_BUFFER_BIT);
-
-
-                //Update?
-            for (Container e : containers)
-            {
-                e.update(dt);
-            }
-            if(imGuiLayer != null) imGuiLayer.update(dt);
-
-            //Switches the buffers to display the next frame
-        glfwSwapBuffers(windowSpecification.windowID);
-    }
-
-    public void resize(int x, int y)
-    {
-
-    }
-
-    public <T extends ImGuiLayer> void attachImGuiLayer(Class<T> imGuiLayer)
-    {
-        try {
-            this.imGuiLayer = imGuiLayer.getDeclaredConstructor(Window.class).newInstance(this);
-        } catch (InstantiationException e) {
-            throw new RuntimeException(e);
-        } catch (IllegalAccessException e) {
-            throw new RuntimeException(e);
-        } catch (InvocationTargetException e) {
-            throw new RuntimeException(e);
-        } catch (NoSuchMethodException e) {
-            throw new RuntimeException(e);
-        }
-
-        this.imGuiLayer.initImGui();
-    }
-
-    public void onClose()
-    {
-        windowNumber -= 1;
-        state.add(WindowState.CLOSED);
-
-        if(windowNumber <= 0) {
-            Application.get().onClose();
-
-            if(imGuiLayer != null)
-            {
-                imGuiLayer.destroyImGui();
-            }
-
-            glfwFreeCallbacks(windowSpecification.windowID);
-            glfwDestroyWindow(windowSpecification.windowID);
-
-            System.gc();
-            log("[KyuubiForge] Destroyed window [" + windowSpecification.windowID + "]");
-            Application.get().onClose();
-            glfwTerminate();
-        }
-        else
-        {
-            if(imGuiLayer != null)
-            {
-                imGuiLayer.destroyImGui();
-            }
-
-            glfwFreeCallbacks(windowSpecification.windowID);
-            glfwDestroyWindow(windowSpecification.windowID);
-
-            System.gc();
-            log("[KyuubiForge] Destroyed window [" + windowSpecification.windowID + "]");
-        }
-    }
-
-    public long getWindowId()
-    {
-        return windowSpecification.windowID;
+    public RenderManager getRenderManager() {
+        return windowHandler.getRenderManager();
     }
 }
