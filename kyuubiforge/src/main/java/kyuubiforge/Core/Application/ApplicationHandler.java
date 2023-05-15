@@ -18,8 +18,7 @@ public class ApplicationHandler {
         this.application = application;
     }
 
-    public void onClose()
-    {
+    public void onClose() {
         log("[KyuubiEditor] Shutting down update loop");
         running = false;
         disposeRenderers();
@@ -31,15 +30,13 @@ public class ApplicationHandler {
         }
     }
 
-    public void run()
-    {
+    public void run() {
         log("[KyuubiEditor] Initialized main window");
 
         beginTime = (float)glfwGetTime();
         dt = -1.0f;
 
-        while(running)
-        {
+        while(running) {
             if(dt >= 0)
             {
                 application.getWindow().update(dt);

@@ -9,8 +9,7 @@ import static kyuubiforge.Debug.Debug.log;
 public class SceneManager {
     private static List<AbstractScene> loadedScenes = new ArrayList<AbstractScene>();
 
-    public <T extends AbstractScene> T loadScene(Class<T> scene)
-    {
+    public <T extends AbstractScene> T loadScene(Class<T> scene) {
         AbstractScene sceneToLoad = null;
 
         try {
@@ -33,8 +32,7 @@ public class SceneManager {
         return null;
     }
 
-    public static List<AbstractScene> getLoadedScenes()
-    {
+    public static List<AbstractScene> getLoadedScenes() {
         return loadedScenes;
     }
 }

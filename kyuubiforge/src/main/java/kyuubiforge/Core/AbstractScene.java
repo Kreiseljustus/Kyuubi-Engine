@@ -1,7 +1,6 @@
 package kyuubiforge.Core;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public abstract class AbstractScene implements ILifeCycle {
     private boolean isRunning = false;

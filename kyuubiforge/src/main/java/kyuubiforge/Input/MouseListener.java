@@ -2,8 +2,7 @@ package kyuubiforge.Input;
 
 import org.joml.Vector2f;
 
-public class MouseListener
-{
+public class MouseListener {
     private static MouseListener instance;
 
     //Scroll values
@@ -21,8 +20,7 @@ public class MouseListener
     private Vector2f gameViewportPos = new Vector2f();
     private Vector2f gameViewportSize = new Vector2f();
 
-    private MouseListener()
-    {
+    private MouseListener() {
         this.scrollX = 0.0;
         this.scrollY = 0.0;
         this.xPos = 0.0;
@@ -31,15 +29,12 @@ public class MouseListener
         this.lastY = 0.0;
     }
 
-    public static void endFrame()
-    {
+    public static void endFrame() {
         //TODO: Finish mouse listener
     }
 
-    public static MouseListener get()
-    {
-        if(MouseListener.instance == null)
-        {
+    public static MouseListener get() {
+        if(MouseListener.instance == null) {
             MouseListener.instance = new MouseListener();
         }
 

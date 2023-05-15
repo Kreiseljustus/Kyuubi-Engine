@@ -16,18 +16,13 @@ public class GameObject
         this.name = name;
     }
 
-    public <T extends AbstractComponent> T getComponent(Class<T> componentClass)
-    {
-        for(AbstractComponent c : components)
-        {
-            if(componentClass.isAssignableFrom(c.getClass()))
-            {
-                try
-                {
+    public <T extends AbstractComponent> T getComponent(Class<T> componentClass) {
+        for(AbstractComponent c : components) {
+            if(componentClass.isAssignableFrom(c.getClass())) {
+                try {
                     return componentClass.cast(c);
                 }
-                catch (ClassCastException classCastException)
-                {
+                catch (ClassCastException classCastException) {
                     Debug.log("[KyuubiForge] " + Arrays.toString(classCastException.getStackTrace()));
                     assert false : "Error: Casting Component";
                 }
@@ -36,42 +31,34 @@ public class GameObject
         return null;
     }
 
-    public <T extends AbstractComponent> void removeComponent(Class<T> componentClass)
-    {
-        for(int i = 0; i < components.size(); i++)
-        {
+    public <T extends AbstractComponent> void removeComponent(Class<T> componentClass) {
+        for(int i = 0; i < components.size(); i++) {
             AbstractComponent c = components.get(i);
-            if(componentClass.isAssignableFrom(c.getClass()))
-            {
+            if(componentClass.isAssignableFrom(c.getClass())) {
                 components.remove(i);
                 return;
             }
         }
     }
 
-    public void addComponent(AbstractComponent c)
-    {
+    public void addComponent(AbstractComponent c) {
         this.components.add(c);
         c.gameObject = this;
     }
 
-    public void drawInspector()
-    {
+    public void drawInspector() {
 
     }
 
-    public void start()
-    {
+    public void start() {
         for (int i = 0; i < components.size(); i++)
         {
             components.get(i).Start();
         }
     }
 
-    public void update(float deltaTime)
-    {
-        for(AbstractComponent c : this.components)
-        {
+    public void update(float deltaTime) {
+        for(AbstractComponent c : this.components) {
             c.Update(deltaTime);
         }
     }

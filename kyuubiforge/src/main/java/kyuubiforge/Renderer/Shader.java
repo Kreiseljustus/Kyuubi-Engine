@@ -29,10 +29,8 @@ public class Shader
         getSource();
     }
 
-    private void getSource()
-    {
-        try
-        {
+    private void getSource() {
+        try {
             String source = new String(Files.readAllBytes(Paths.get(filePath)));
             String[] splitString = source.split("(#type)( )+([a-zA-Z]+)");
 
@@ -45,38 +43,30 @@ public class Shader
             endOfLine = source.indexOf("\r\n", index);
             String secondPattern = source.substring(index,endOfLine).trim();
 
-            if(firstPattern.equals("vertex"))
-            {
+            if(firstPattern.equals("vertex")) {
                 vertexSource = splitString[1];
-            } else if(firstPattern.equals("fragment"))
-            {
+            } else if(firstPattern.equals("fragment")) {
                 fragmentSource = splitString[1];
             }
-            else
-            {
+            else {
                 throw new IOException("Unexpected token " + firstPattern + " in " + filePath);
             }
 
-            if(secondPattern.equals("vertex"))
-            {
+            if(secondPattern.equals("vertex")) {
                 vertexSource = splitString[2];
-            } else if(secondPattern.equals("fragment"))
-            {
+            } else if(secondPattern.equals("fragment")) {
                 fragmentSource = splitString[2];
             }
-            else
-            {
+            else {
                 throw new IOException("Unexpected token " + firstPattern + " in " + filePath);
             }
-        } catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
             assert false: "Error: Could not open file for shader: " + filePath;
         }
     }
 
-    public void compile()
-    {
+    public void compile() {
         int vertexID, fragmentID;
 
         vertexID = glCreateShader(GL_VERTEX_SHADER);
@@ -115,8 +105,7 @@ public class Shader
 
         //Errors
         success = glGetProgrami(shaderProgramID, GL_LINK_STATUS);
-        if(success == 0)
-        {
+        if(success == 0) {
             int length = glGetProgrami(shaderProgramID, GL_INFO_LOG_LENGTH);
             log("Error in '"+ filePath + " ' \n\tLinking shaders failed");
             System.out.println(glGetProgramInfoLog(shaderProgramID, length));
@@ -126,8 +115,7 @@ public class Shader
         shaders.put(shaderProgramID, this);
     }
 
-    public void uploadMat4f(String varName, Matrix4f mat4)
-    {
+    public void uploadMat4f(String varName, Matrix4f mat4) {
         int varLocation = glGetUniformLocation(shaderProgramID, varName);
         FloatBuffer matBuffer = BufferUtils.createFloatBuffer(16);
         mat4.get(matBuffer);

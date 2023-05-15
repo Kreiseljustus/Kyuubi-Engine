@@ -1,7 +1,6 @@
 package kyuubiforge.Input;
 
-public class KeyListener
-{
+public class KeyListener {
     private static KeyListener instance;
     //Key map with 350 values
     //See https://www.glfw.org/docs/3.3/group__keys.html
@@ -10,10 +9,8 @@ public class KeyListener
     private KeyListener() {}
 
     //Singleton
-    public static KeyListener get()
-    {
-        if(KeyListener.instance == null)
-        {
+    public static KeyListener get() {
+        if(KeyListener.instance == null) {
             KeyListener.instance = new KeyListener();
         }
 
@@ -21,14 +18,11 @@ public class KeyListener
     }
 
     //Mods are things like STRG + Key
-    public static void keyCallback(long window, int key, int scancode, int action, int mods)
-    {
-        if(action == 1)
-        {
+    public static void keyCallback(long window, int key, int scancode, int action, int mods) {
+        if(action == 1) {
             get().keyPressed[key] = true;
         }
-        else if (action == 0)
-        {
+        else if (action == 0) {
             get().keyPressed[key] = false;
         }
     }

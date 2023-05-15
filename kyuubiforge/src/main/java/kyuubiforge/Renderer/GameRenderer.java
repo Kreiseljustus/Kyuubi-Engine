@@ -16,8 +16,7 @@ public class GameRenderer extends AbstractRenderLayer {
     private List<AbstractScene> loadedScenes = new ArrayList<AbstractScene>();
 
     @Override
-    public void init()
-    {
+    public void init() {
         loadedScenes = SceneManager.getLoadedScenes();
 
         /*
@@ -26,19 +25,15 @@ public class GameRenderer extends AbstractRenderLayer {
     }
 
     @Override
-    public void update(float dt)
-    {
-        for (AbstractScene scene : loadedScenes)
-        {
-            for (GameObject g : scene.getGameObjects())
-            {
+    public void update(float dt) {
+        for (AbstractScene scene : loadedScenes) {
+            for (GameObject g : scene.getGameObjects()) {
                 g.update(dt);
             }
         }
     }
 
-    public void OnSceneLoaded()
-    {
+    public void OnSceneLoaded() {
         //Inefficient because of duplicating the whole array?
         //Maybe create load and unload callbacks and remove/add the scenes
         loadedScenes = SceneManager.getLoadedScenes();

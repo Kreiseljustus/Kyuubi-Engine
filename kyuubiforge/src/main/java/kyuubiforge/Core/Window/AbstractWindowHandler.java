@@ -142,8 +142,7 @@ public abstract class AbstractWindowHandler {
     }
 
     private boolean shouldClose() {
-        if(glfwWindowShouldClose(windowSpecification.windowID))
-        {
+        if(glfwWindowShouldClose(windowSpecification.windowID)) {
             this.close();
             return true;
         }
@@ -151,15 +150,13 @@ public abstract class AbstractWindowHandler {
     }
 
     private void updateScenes(float dt) {
-        for(AbstractScene scene : sceneManager.getLoadedScenes())
-        {
+        for(AbstractScene scene : sceneManager.getLoadedScenes()) {
             scene.update(dt);
         }
     }
 
     private void destroyWindow() {
-        if(imGuiLayer != null)
-        {
+        if(imGuiLayer != null) {
             imGuiLayer.destroyImGui();
         }
 
@@ -173,8 +170,7 @@ public abstract class AbstractWindowHandler {
     private void destroyApplication() {
         Application.get().getApplicationHandler().onClose();
 
-        if(imGuiLayer != null)
-        {
+        if(imGuiLayer != null) {
             imGuiLayer.destroyImGui();
         }
 

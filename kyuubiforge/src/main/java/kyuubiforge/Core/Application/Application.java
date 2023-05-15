@@ -18,8 +18,7 @@ public class Application {
 
     private final ApplicationHandler applicationHandler = new ApplicationHandler(this);
 
-    public Application(@NotNull ApplicationSpecification specification)
-    {
+    public Application(@NotNull ApplicationSpecification specification) {
         instance = this;
 
         applicationSpecification = specification;
