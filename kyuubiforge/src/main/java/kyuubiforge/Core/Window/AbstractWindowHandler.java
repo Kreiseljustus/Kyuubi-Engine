@@ -57,7 +57,9 @@ public abstract class AbstractWindowHandler {
     protected void update(float dt) {
         glfwPollEvents();
 
-        shouldClose();
+        if(shouldClose()) {
+            return;
+        }
 
         glClearColor(1.0f,1.0f,1.0f,1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
@@ -139,11 +141,13 @@ public abstract class AbstractWindowHandler {
         GL.createCapabilities();
     }
 
-    private void shouldClose() {
+    private boolean shouldClose() {
         if(glfwWindowShouldClose(windowSpecification.windowID))
         {
             this.close();
+            return true;
         }
+        return false;
     }
 
     private void updateScenes(float dt) {
