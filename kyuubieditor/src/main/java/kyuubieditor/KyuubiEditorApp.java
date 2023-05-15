@@ -12,7 +12,7 @@ public class KyuubiEditorApp
         ApplicationSpecification specs = new ApplicationSpecification("KyuubiEditor", windowSpecification);
         KyuubiEditor editor = new KyuubiEditor(specs);
 
-        //editor.getWindow().attachImGuiLayer(Testlayer.class);
+        editor.getWindow().attachImGuiLayer(Testlayer.class);
 
         editor.getApplicationHandler().run();
     }

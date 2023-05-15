@@ -3,30 +3,31 @@ package kyuubiforge.Core;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class AbstractScene {
+public abstract class AbstractScene implements ILifeCycle {
     private boolean isRunning = false;
     protected ArrayList<GameObject> gameObjects = new ArrayList<>();
 
     protected ArrayList<GameObject> selectedGameObjects = new ArrayList<>();
     protected GameObject activeGameObject = null;
 
-    public AbstractScene()
-    {
+    public AbstractScene() {
 
     }
 
-    public void init()
-    {
+    public void init() {
 
     }
 
-    public void start()
-    {
+    public void start() {
         for(GameObject g : gameObjects)
         {
             g.start();
         }
         isRunning = true;
+    }
+
+    public void dispose() {
+
     }
 
     public void addGameObject(GameObject g)

@@ -86,7 +86,7 @@ public abstract class AbstractWindowHandler {
     protected <T extends AbstractImGuiLayer> void attachImGuiLayer(@NotNull Class<T> imGuiLayer) {
         try {
             Constructor<T> declaredConstructor = imGuiLayer.getDeclaredConstructor(Window.class);
-            this.imGuiLayer = declaredConstructor.newInstance(this);
+            this.imGuiLayer = declaredConstructor.newInstance(window);
         } catch (InstantiationException | InvocationTargetException | IllegalAccessException | NoSuchMethodException e) {
             throw new RuntimeException(e);
         }
