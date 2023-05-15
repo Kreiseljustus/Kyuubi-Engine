@@ -101,13 +101,18 @@ public abstract class AbstractWindowHandler {
             assert false : "[KyuubiForge] Failed to initialize GLFW! Restart required.";
             throw new IllegalStateException("Initializing GLFW failed!");
         }
+
+        //glfwSetKeyCallback(windowSpecification.windowID, KeyListener::invoke);
     }
 
     private void setWindowHints() {
         glfwDefaultWindowHints();
 
         glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE);
-        glfwWindowHint(GLFW_DECORATED, windowSpecification.isDecorated ? GLFW_TRUE : GLFW_FALSE);
+        if(windowSpecification.isDecorated) {
+            glfwWindowHint(GLFW_DECORATED, GLFW_TRUE);
+            state.add(WindowState.DECORATED);
+        }
         if(windowSpecification.isResizeable) {
             glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE);
             state.add(WindowState.RESIZEABLE);
@@ -131,7 +136,6 @@ public abstract class AbstractWindowHandler {
 
         glfwSwapInterval(1);
 
-        //Show the window
         glfwShowWindow(windowSpecification.windowID);
         state.add(WindowState.OPEN);
 

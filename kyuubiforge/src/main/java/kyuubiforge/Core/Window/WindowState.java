@@ -39,5 +39,9 @@ public enum WindowState {
      * The window needs a user interaction before the rest of the application becomes intractable again. <br>
      * Think of it like a message box.
      */
-    MODAL;
+    MODAL,
+    /**
+     * The Window is decorated and has a close, minimize and fullscreen button.
+     */
+    DECORATED;
 }
