@@ -3,7 +3,8 @@ Most up-to date branch:
 #### engine
 
 # Kyuubi-Engine
-
+Check out our [Website](https://kyuubi-engine.com/)  
+and our [development documentation](https://kyuubi-engine.com/dev)
 ## How to navigate
 Kyuubiforge is the backend engine.
 Kyuubieditor is the editor which uses the engine to create games.
