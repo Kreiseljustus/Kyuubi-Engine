@@ -1,6 +1,4 @@
-rootProject.name = 'Kyuubi'
+rootProject.name = 'kyuubi'
 include 'kyuubiforge'
 include 'kyuubieditor'
-include 'kyuubiforge:src:main:tests'
-findProject(':kyuubiforge:src:main:tests')?.name = 'tests'
 

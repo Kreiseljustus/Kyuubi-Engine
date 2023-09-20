@@ -3,15 +3,17 @@ plugins{
     id 'application'
 }
 
+def editorMainClass = "EditorApplication"
+
 application {
-    mainClass = 'kyuubieditor.KyuubiEditorApp'
+    mainClass = editorMainClass
 }
 
 jar
         {
             manifest {
                 attributes(
-                        'Main-Class': 'kyuubieditor.KyuubiEditorApp'
+                        'Main-Class': editorMainClass
                 )
             }
         }
@@ -20,20 +22,28 @@ repositories {
     mavenCentral()
 }
 
-task fullEditor(type: Jar)
+tasks.register('buildFullEditor', Jar)
 {
+    System.out.println("Building editor...")
     duplicatesStrategy = DuplicatesStrategy.INCLUDE
-    classifier = 'all'
+    //classifier = 'all'
 
     manifest{
         attributes(
-                'Main-Class': 'kyuubieditor.KyuubiEditorApp'
+                'Main-Class': editorMainClass
         )
     }
     from {
         configurations.runtimeClasspath.collect {it.isDirectory() ? it:zipTree(it)}
     }
     with jar
+    System.out.println("Finsihed building editor!")
+}
+buildFullEditor.dependsOn(":kyuubiforge:buildEngine")
+
+configure(buildFullEditor) {
+    def groupName = "Engine"
+    group = groupName
 }
 
 dependencies {

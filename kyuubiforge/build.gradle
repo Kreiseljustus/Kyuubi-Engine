@@ -6,6 +6,12 @@ repositories {
     mavenCentral()
 }
 
+tasks.register("buildEngine") {
+    System.out.println("Building engine...")
+
+    System.out.println("Finsihed building engine...")
+}
+
 project.ext.lwjglVersion = "3.3.1"
 project.ext.jomlVersion = "1.10.5"
 project.ext.lwjglNatives = "natives-windows"
