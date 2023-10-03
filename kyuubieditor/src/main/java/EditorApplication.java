@@ -1,6 +1,19 @@
-public class EditorApplication {
+public class EditorApplication extends Application {
+
+    private final Application application;
+
     public static void main(String[] args) {
-        System.out.println("Editor");
-        while(true) {}
+        new EditorApplication();
+    }
+
+    public EditorApplication() {
+        application = createApplication();
+        application.run();
+    }
+
+    @Override
+    Application createApplication() {
+        this.applicationName = "test";
+        return this;
     }
 }
