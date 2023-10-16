@@ -25,8 +25,6 @@ dependencies {
     implementation "org.lwjgl:lwjgl-openal"
     implementation "org.lwjgl:lwjgl-opengl"
     implementation "org.lwjgl:lwjgl-stb"
-    implementation 'org.apache.logging.log4j:log4j-api:2.15.0'
-    implementation 'org.apache.logging.log4j:log4j-core:2.15.0'
     implementation 'org.jetbrains:annotations:23.0.0'
     runtimeOnly "org.lwjgl:lwjgl::$lwjglNatives"
     runtimeOnly "org.lwjgl:lwjgl-assimp::$lwjglNatives"
@@ -36,4 +34,8 @@ dependencies {
     runtimeOnly "org.lwjgl:lwjgl-opengl::$lwjglNatives"
     runtimeOnly "org.lwjgl:lwjgl-stb::$lwjglNatives"
     implementation "org.joml:joml:${jomlVersion}"
+
+    implementation group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.20.0'
+    implementation group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.20.0'
+    implementation group: 'org.apache.logging.log4j', name: 'log4j-slf4j-impl', version: '2.20.0'
 }
