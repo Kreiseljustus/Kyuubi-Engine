@@ -1,4 +1,5 @@
 import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class EditorApplication extends Application {
 
@@ -15,7 +16,6 @@ public class EditorApplication extends Application {
 
     @Override
     Application createApplication() {
-        LogManager.getLogger(this).warn("TERs");
         this.applicationName = "test";
         return this;
     }

@@ -1,16 +1,10 @@
-import org.apache.logging.log4j.LogManager;
+import logging.Loggers;
 
 public abstract class Application {
     protected String applicationName;
 
     public void run() {
-        System.out.println(applicationName + " has been run");
-        Loggers.ClientLogger.debug("He");
-        System.out.println("Called");
-        while(true) {
-            LogManager.getLogger("KYUUBI").info("HHH");
-
-        }
+        Loggers.CoreLogger.info("Starting " + applicationName);
     }
 
     abstract Application createApplication();
