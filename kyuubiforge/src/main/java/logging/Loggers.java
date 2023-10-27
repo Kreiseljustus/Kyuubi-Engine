@@ -8,8 +8,7 @@ public class Loggers {
     public static Logger CoreLogger = new EmptyLogger();
     public static final Logger ClientLogger = LogManager.getLogger("APPLICATION");
 
-    public static Logger enableCoreLogger() {
+    public static void enableCoreLogger() {
         CoreLogger = LogManager.getLogger("KYUUBI");
-        return CoreLogger;
     }
 }
