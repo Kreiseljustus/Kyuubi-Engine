@@ -1,6 +1,6 @@
-Most up-to date branch:
 
-#### 2023.1
+# This repository is archived for the time being.
+I will continue to learn and come back to this project one day.
 
 # Kyuubi-Engine
 Check out our [Website](https://kyuubi-engine.com/)  
